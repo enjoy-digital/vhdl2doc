@@ -42,8 +42,9 @@ from generateLatex     import *
 # VHDL2Doc Program arguments
 #=================================
 parser = OptionParser()
-parser.add_option("-t",dest="designEntity", help ="Vhdl2Doc Top Entity")
-parser.add_option("-v",dest="verboseMode", help ="Vhdl2Doc Top Entity")
+parser.add_option("-t","--top",dest="designEntity", help ="Vhdl2Doc Top Entity",metavar="designEntity")
+parser.add_option("-v","--verbose",dest="verboseMode",action="store_false", help ="Verbose Mode On")
+parser.add_option("-f","--force",dest="forceMode",action="store_false", help ="Force Generation on Errors in Parsing")
 (options, args) = parser.parse_args()
 
 print options.designEntity
@@ -62,6 +63,12 @@ if options.verboseMode == None:
 else:
   verboseMode = True
 
+#Get Verbose Mode
+if options.forceMode == None:
+  forceMode = False
+else:
+  forceMode = True  
+
 #=================================
 # Search VHDL Files in Directory
 #=================================
@@ -73,63 +80,63 @@ fileList = searchVhdlFiles(globalPath)
 #=================================
 # Parse VHDL Files
 #=================================
-parseInfo = parseVhdlFiles(fileList,verboseMode)
+errorParse = parseVhdlFiles(fileList,verboseMode)
 
-#=================================
-# Find Hierarchy in VHDL Files
-#=================================
+if (errorParse == 0 or forceMode == True):
 
-print "-=====================================================================-"              
-print " Start scrunching and twisting all VHDL Data together..."
-print "-=====================================================================-"
-#Find Orfan Entities
-orfanList = findOrfanEntity()
+  #=================================
+  # Find Hierarchy in VHDL Files
+  #=================================
 
-#Select designEntity
-if designEntitySelect:  designEntity = selectOrfanEntity(orfanList)
+  print "-=====================================================================-"              
+  print " Start scrunching and twisting all VHDL Data together..."
+  print "-=====================================================================-"
+  #Find Orfan Entities
+  orfanList = findOrfanEntity()
 
-#Find Design Hierarchy
-findDesignHierarchy(designEntity,0)
+  #Select designEntity
+  if designEntitySelect:  designEntity = selectOrfanEntity(orfanList)
 
-#=================================
-# Generate Html Documentation
-#=================================
-print "-=====================================================================-"              
-print " Start Html Generation..."
-print "-=====================================================================-"
+  #Find Design Hierarchy
+  findDesignHierarchy(designEntity,0)
 
-#Prepare Directories
-prepareHtmlDir(designEntity)
+  #=================================
+  # Generate Html Documentation
+  #=================================
+  print "-=====================================================================-"              
+  print " Start Html Generation..."
+  print "-=====================================================================-"
 
-#Generate Index   
-generateHomeHtml(designEntity,designHierarchyFileList)
+  #Prepare Directories
+  prepareHtmlDir(designEntity)
 
-#Generate Utils
-designFileList = generateUtilsHtml(designEntity,designHierarchyFileList)
+  #Generate Index   
+  generateHomeHtml(designEntity,designHierarchyFileList)
 
-#Generate Entities
-generateEntitiesListHtml(designFileList,"work",globalPath)
+  #Generate Utils
+  designFileList = generateUtilsHtml(designEntity,designHierarchyFileList)
 
-#Generate Packages
-generatePackageListHtml(designFileList,"work",globalPath)
+  #Generate Entities
+  generateEntitiesListHtml(designFileList,"work",globalPath)
 
-#Generate Documentation
-generateDocumentationHtml()
+  #Generate Packages
+  generatePackageListHtml(designFileList,"work",globalPath)
 
-#Generate Sources List & Highlight
-generateSourcesListHtml(fileList,designFileList,globalPath)
-generateSourcesHighlightHtml(designFileList)
+  #Generate Documentation
+  generateDocumentationHtml()
 
-#Generate About  
-generateAboutHtml()
+  #Generate Sources List & Highlight
+  generateSourcesListHtml(fileList,designFileList,globalPath)
+  generateSourcesHighlightHtml(designFileList)
 
-
-#=================================
-# Generate Latex Documentation
-#=================================
-print "-=====================================================================-"              
-print " Start Latex Generation..."
-print "-=====================================================================-"
-generateDocumentationLatex("documentationLatex.tex")
+  #Generate About  
+  generateAboutHtml()
 
 
+  #=================================
+  # Generate Latex Documentation
+  #=================================
+  print "-=====================================================================-"              
+  print " Start Latex Generation..."
+  print "-=====================================================================-"
+  generateDocumentationLatex("documentationLatex.tex")
