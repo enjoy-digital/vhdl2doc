@@ -6,20 +6,20 @@
 # Purpose : generateHierarchy.py
 #           Generate Hierarchy between VHDL Files
 #===============================================================================
-# Copyright (c) 2011  Enjoy-Digital Florent Kermarrec <florent@enjoy-digital.fr>  
+# Copyright (c) 2011  Enjoy-Digital Florent Kermarrec <florent@enjoy-digital.fr>
 #  
-#  This file is free software: you may copy, redistribute and/or modify it  
-#  under the terms of the GNU General Public License as published by the  
-#  Free Software Foundation, either version 2 of the License, or (at your  
-#  option) any later version.  
+#  This file is free software: you may copy, redistribute and/or modify it
+#  under the terms of the GNU General Public License as published by the
+#  Free Software Foundation, either version 2 of the License, or (at your
+#  option) any later version.
 #  
-#  This file is distributed in the hope that it will be useful, but  
-#  WITHOUT ANY WARRANTY; without even the implied warranty of  
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  
-#  General Public License for more details.  
+#  This file is distributed in the hope that it will be useful, but
+#  WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#  General Public License for more details.
 #  
 #  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <http://www.gnu.org/licenses/>.  
+#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #=============================================================================== 
 
 #=================================
@@ -38,7 +38,7 @@ from parseFiles        import *
 
 #Generic Infos Ranks
 FILENAME_RK                    = 0
-LINENUMBER_RK                  = 1                         
+LINENUMBER_RK                  = 1
 TYPE_RK                        = 2
 TYPE_NAME_RK                   = 3
 
@@ -49,7 +49,7 @@ LIBRARY_NAME_RK                = 3
 USE_NAME_RK                    = 3
 USE_ENTITY_NAME_RK             = 4
 
-#Entity Infos Ranks                               
+#Entity Infos Ranks
 ENTITY_NAME_RK                 = 3
 
 #Entity Signals Infos Ranks
@@ -123,10 +123,6 @@ def findOrfanEntity ():
       for findOrfanElement in parseInfo:
         findOrfanElementType     = findOrfanElement[TYPE_RK]
         findOrfanElementFilename = findOrfanElement[FILENAME_RK]
-        #if findOrfanElementType == "component":
-        #    componentEntity = findOrfanElement[COMPONENT_NAME_RK]
-        #    if componentEntity == entityName:
-        #      entityIsOrfan = False
         if  findOrfanElementType == "instance":
             instanceEntity = findOrfanElement[INSTANCE_ENTITY_NAME_RK]
             if instanceEntity == entityName:
@@ -160,7 +156,7 @@ def selectOrfanEntity (orfanList):
   
 #=================================
 # retrieveFilenameElement
-#=================================   
+#=================================
 def retrieveFilenameElement(parseInfo,elType,elName):
 
   #Retrieve File Name 
@@ -236,7 +232,7 @@ def isEntityLinkTo(designEntity):
   
 #=================================
 # listDesignFilesOrdered
-#=================================  
+#=================================
 def listDesignFilesOrdered(fileList,designFileList):
   
   designFileListOrdered = []
@@ -252,7 +248,7 @@ def listDesignFilesOrdered(fileList,designFileList):
   
 #=================================
 # listDataTag
-#=================================  
+#=================================
 def listDataTag(tagType,tagName,tagFilename):
 
   #Create empty List
@@ -278,7 +274,7 @@ def listDataTag(tagType,tagName,tagFilename):
 
 #=================================
 # listLibrary
-#=================================  
+#=================================
 def listLibrary(entityFilename):
 
   libraryList = []
@@ -322,7 +318,7 @@ def listLibrary(entityFilename):
   
 #=================================
 # listSignal
-#=================================  
+#=================================
 def listSignal(entityName):
 
   signalList = []
@@ -346,7 +342,7 @@ def listSignal(entityName):
   
 #=================================
 # listArchitecture
-#=================================  
+#=================================
 def listArchitecture(entityName):
 
   architectureList = []
@@ -362,9 +358,7 @@ def listArchitecture(entityName):
       if compareString(entityName,architectureEntityName):
         architectureList.append(architectureName)
           
-  return architectureList   
-  
-  
+  return architectureList
   
 #======================================
 # GenerateHierarchyProtovis Function
@@ -392,7 +386,7 @@ def generateHierarchyProtovis(designHierarchyFileList):
       #If Same Level "," to indicate next
       if levelLast == designHierarchyElement[HIERARCHY_LEVEL_RK]:
         print >> fh, ","
-      #If last Level > current Level, close bracket(s)  
+      #If last Level > current Level, close bracket(s)
       elif levelLast > designHierarchyElement[HIERARCHY_LEVEL_RK]:
         for i in range(levelLast-designHierarchyElement[HIERARCHY_LEVEL_RK]):
           print >> fh, "},"
@@ -408,7 +402,7 @@ def generateHierarchyProtovis(designHierarchyFileList):
       #Suppress "."
       print >> fh, "%s : 1"%str.replace(designHierarchyElement[HIERARCHY_NAME_RK],".","_"),
     
-    #If Instance  
+    #If Instance
     elif designHierarchyElement[HIERARCHY_TYPE_RK] == "instance":
       
       #If Instance entity is link to others entity
@@ -422,17 +416,12 @@ def generateHierarchyProtovis(designHierarchyFileList):
     #Update Last Level
     levelLast = designHierarchyElement[HIERARCHY_LEVEL_RK]
     
-  #Close level brackets   
+  #Close level brackets
   for i in range(levelLast+1):
     print >> fh, "}"
   
-  #Close last brackets   
+  #Close last brackets
   print >> fh, "};"
   
-  #Close file        
+  #Close file
   fh.close()  
-  
-  
-  
-  
-      
