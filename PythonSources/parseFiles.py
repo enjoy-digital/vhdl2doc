@@ -151,25 +151,25 @@ def parseVhdlFiles(fileList,mode):
          linkTagLineFound = False
          
          if isTagLine == True:
-          if  re.search('^ *--\* *@link +\[([A-Za-z0-9_]+)\] +\[([A-Za-z0-9_]+)\]',line,re.I):
-            m=re.match('^ *--\* *@link +\[([A-Za-z0-9_]+)\] +\[([A-Za-z0-9_]+)\]',line,re.I)
-            linkTagType = m.group(1)
-            linkTagName = m.group(2)
-            linkTagLineFound = True
-            if verboseMode:
-              print "%05d: Found Link Tag %s %s" %(lineNumber,linkTagType,linkTagName)
+            m = re.search('^ *--\* *@link +\[([A-Za-z0-9_]+)\] +\[([A-Za-z0-9_]+)\]',line,re.I)
+            if m is not None:
+              linkTagType = m.group(1)
+              linkTagName = m.group(2)
+              linkTagLineFound = True
+              if verboseMode:
+                print "%05d: Found Link Tag %s %s" %(lineNumber,linkTagType,linkTagName)
          #==================================
          #Search for "--* @title xxx"
          #==================================
          titleTagLineFound = False
          
          if isTagLine == True:
-          if  re.search('^ *--\* *@title *(.+)',line,re.I):
-            m=re.match('^ *--\* *@title *(.+)',line,re.I)
-            titleTag = m.group(1)
-            titleTagLineFound = True
-            if verboseMode:
-              print "%05d: Found Title Tag" %(lineNumber)
+           m = re.search('^ *--\* *@title *(.+)',line,re.I)
+           if m is not None:
+             titleTag = m.group(1)
+             titleTagLineFound = True
+             if verboseMode:
+               print "%05d: Found Title Tag" %(lineNumber)
          
          #==================================
          #Search for "--* @brief xxx"
@@ -177,8 +177,8 @@ def parseVhdlFiles(fileList,mode):
          briefTagLineFound = False
          
          if isTagLine == True:
-          if  re.search('^ *--\* *@brief *(.+)',line,re.I):
-            m=re.match('^ *--\* *@brief *(.+)',line,re.I)
+          m = re.search('^ *--\* *@brief *(.+)',line,re.I)
+          if m is not None:
             briefTag = m.group(1)
             briefTagLineFound = True
             if verboseMode:
@@ -190,12 +190,12 @@ def parseVhdlFiles(fileList,mode):
          detailsTagLineFound = False
          
          if isTagLine == True:
-          if  re.search('^ *--\* *@details *(.+)',line,re.I):
-            m=re.match('^ *--\* *@details *(.+)',line,re.I)
-            detailsTag = m.group(1)
-            detailsTagLineFound = True
-            if verboseMode:
-              print "%05d: Found Details Tag" %(lineNumber)
+           m = re.search('^ *--\* *@details *(.+)',line,re.I)
+           if m is not None:
+             detailsTag = m.group(1)
+             detailsTagLineFound = True
+             if verboseMode:
+               print "%05d: Found Details Tag" %(lineNumber)
          
          #==================================
          #Search for "--* @fig [xxx] [xxx]"
@@ -203,13 +203,13 @@ def parseVhdlFiles(fileList,mode):
          figTagLineFound = False
          
          if isTagLine == True:
-          if  re.search('^ *--\* *@fig +\[([A-Za-z0-9_: ]+)\] +\[([A-Za-z0-9_.]+)\]',line,re.I):
-            m=re.match('^ *--\* *@fig +\[([A-Za-z0-9_: ]+)\] +\[([A-Za-z0-9_.]+)\]',line,re.I)
-            figTagName     = m.group(1)
-            figTagFilename = m.group(2)
-            figTagLineFound = True 
-            if verboseMode:
-              print "%05d: Found Fig Tag %s" %(lineNumber,figTagName)  
+           m = re.search('^ *--\* *@fig +\[([A-Za-z0-9_: ]+)\] +\[([A-Za-z0-9_.]+)\]',line,re.I)
+           if m is not None:
+             figTagName     = m.group(1)
+             figTagFilename = m.group(2)
+             figTagLineFound = True 
+             if verboseMode:
+               print "%05d: Found Fig Tag %s" %(lineNumber,figTagName)  
           
            
               
@@ -232,26 +232,26 @@ def parseVhdlFiles(fileList,mode):
          libraryLineFound = False
          
          if continueLineAnalysis:
-           if  re.search('^ *library +([A-Za-z0-9]+) *; *',line,re.I):
-              m=re.match('^ *library +([A-Za-z0-9]+) *; *',line,re.I) 
-              libraryName      = m.group(1)
-              libraryLineFound = True
-              continueLineAnalysis = False
-              if verboseMode:
-                print "%05d: Found Library %s" %(lineNumber,libraryName)
-              
+           m=re.search('^ *library +([A-Za-z0-9]+) *; *',line,re.I)
+           if m is not None:
+             libraryName      = m.group(1)
+             libraryLineFound = True
+             continueLineAnalysis = False
+             if verboseMode:
+               print "%05d: Found Library %s" %(lineNumber,libraryName)
+         
          #=======================
          #Seach for "use xxx.xxx"
          #=======================
          useLineFound = False
          
          if continueLineAnalysis:
-           if  re.search('^ *use *([A-Za-z0-9_]+\.[A-Za-z0-9_]+\.[A-Za-z0-9_]+) *; *',line,re.I):
-              m=re.match('^ *use *([A-Za-z0-9_]+\.[A-Za-z0-9_]+\.[A-Za-z0-9_]+) *; *',line,re.I) 
-              useName      = m.group(1)
-              useLineFound = True
-              if verboseMode:
-                print "%05d: Found Use %s" %(lineNumber,useName)
+           m=re.search('^ *use *([A-Za-z0-9_]+\.[A-Za-z0-9_]+\.[A-Za-z0-9_]+) *; *',line,re.I)
+           if m is not None:
+             useName      = m.group(1)
+             useLineFound = True
+             if verboseMode:
+               print "%05d: Found Use %s" %(lineNumber,useName)
               
          #=========================     
          #Seach for "entity xxx is"
@@ -262,32 +262,32 @@ def parseVhdlFiles(fileList,mode):
          
          #Search for Entity Start
          if continueLineAnalysis:
-           if  re.search('^ *entity *([A-Za-z0-9_]+) *is *',line,re.I):
-              m=re.match('^ *entity *([A-Za-z0-9_]+) *is *',line,re.I) 
-              entityName      = m.group(1)
-              entityStartFound = True
-              totalEntityNumber = totalEntityNumber + 1 ;
+           m=re.search('^ *entity *([A-Za-z0-9_]+) *is *',line,re.I) 
+           if m is not None:
+             entityName      = m.group(1)
+             entityStartFound = True
+             totalEntityNumber = totalEntityNumber + 1 ;
               
          entitySignalLineFound = False
               
          #Search for Entity Signals
          if continueLineAnalysis:
            if isInEntity:
-             if  re.search('^ *[A-Za-z0-9_]+ +: +[inout]+ +[A-Za-z0-9_ ()\-\*]+;*',line,re.I):
-                m=re.match('^ *([A-Za-z0-9_]+) +: +([inout]+) +([A-Za-z0-9_ ()\-\*]+);*',line,re.I)
-                entitySignalName      = m.group(1)
-                entitySignalDirection = m.group(2)
-                entitySignalType      = m.group(3)
-                entitySignalLineFound = True
-                if verboseMode:
+             m=re.search('^ *([A-Za-z0-9_]+) +: +([inout]+) +([A-Za-z0-9_ ()\-\*]+);*',line,re.I)
+             if m is not None:
+               entitySignalName      = m.group(1)
+               entitySignalDirection = m.group(2)
+               entitySignalType      = m.group(3)
+               entitySignalLineFound = True
+               if verboseMode:
                  print "%05d: Found Entity Signal %s " %(lineNumber,entitySignalName)       
               
          #Search for Entity End
          if continueLineAnalysis:
-           if  re.search('^ *end +([A-Za-z0-9_]+) *; *',line,re.I):
-              m=re.match('^ *end +([A-Za-z0-9_]+) *; *',line,re.I)
-              if entityName == m.group(1):
-                entityEndFound = True
+           m=re.search('^ *end +([A-Za-z0-9_]+) *; *',line,re.I)
+           if m is not None:
+             if entityName == m.group(1):
+               entityEndFound = True
                 
          #Entity Error Handling
          #Start Entity Detection while in entity
@@ -312,17 +312,17 @@ def parseVhdlFiles(fileList,mode):
          
          #Search for Package Start
          if continueLineAnalysis:
-           if  re.search('^ *package *([A-Za-z0-9_]+) *is *',line,re.I):
-              m=re.match('^ *package *([A-Za-z0-9_]+) *is *',line,re.I) 
-              packageName      = m.group(1)
-              packageStartFound = True
+           m=re.match('^ *package *([A-Za-z0-9_]+) *is *',line,re.I)
+           if m is not None:
+             packageName      = m.group(1)
+             packageStartFound = True
          
          #Search for Package End
          if continueLineAnalysis:
-           if  re.search('^ *end +([A-Za-z0-9_]+) *; *',line,re.I):
-              m=re.match('^ *end +([A-Za-z0-9_]+) *; *',line,re.I)
-              if packageName == m.group(1):
-                packageEndFound = True
+           m=re.match('^ *end +([A-Za-z0-9_]+) *; *',line,re.I)
+           if m is not None:
+             if packageName == m.group(1):
+               packageEndFound = True
                 
          #Package Error Handling
          #Start Package Detection while in entity
@@ -345,13 +345,13 @@ def parseVhdlFiles(fileList,mode):
          
          if continueLineAnalysis:
            if isInPackage: 
-             if  re.search('^ *function +[A-Za-z0-9_]+\( *',line,re.I):
-                m=re.match('^ *function +([A-Za-z0-9_]+)\( *',line,re.I) 
-                functionName      = m.group(1)
-                functionLineFound = True
-                totalFunctionNumber = totalFunctionNumber + 1 ;
+             m=re.search('^ *function +([A-Za-z0-9_]+)\( *',line,re.I)
+             if m is not None:
+               functionName      = m.group(1)
+               functionLineFound = True
+               totalFunctionNumber = totalFunctionNumber + 1 ;
                 
-                if verboseMode:
+               if verboseMode:
                  print "%05d: Found Function %s" %(lineNumber,functionName)
   
          #======================================     
@@ -364,25 +364,25 @@ def parseVhdlFiles(fileList,mode):
          
          #Search for Architecture Start
          if continueLineAnalysis:
-           if  re.search('^ *architecture *([A-Za-z0-9_]+) +of +([A-Za-z0-9_]+) +is *',line,re.I):
-              m=re.match('^ *architecture *([A-Za-z0-9_]+) +of +([A-Za-z0-9_]+) +is *',line,re.I) 
-              if entityName == m.group(2):  
-                architectureName  = m.group(1)
-                architectureStartFound = True
+           m=re.search('^ *architecture *([A-Za-z0-9_]+) +of +([A-Za-z0-9_]+) +is *',line,re.I)
+           if m is not None:
+             if entityName == m.group(2):  
+               architectureName  = m.group(1)
+               architectureStartFound = True
                 
          #Search for Architecture Begin
          if continueLineAnalysis:
            if  re.search('^ *begin *',line,re.I):
               if  isInArchitecture :
-                architectureBeginFound = True      
+                architectureBeginFound = True
                 
                 
          #Search for Architecture End
          if continueLineAnalysis:
-           if  re.search('^ *end *([A-Za-z0-9_]+) *; *',line,re.I):
-              m=re.match('^ *end *([A-Za-z0-9_]+) *; *',line,re.I) 
-              if architectureName == m.group(1):
-                architectureEndFound = True
+           m=re.search('^ *end *([A-Za-z0-9_]+) *; *',line,re.I)
+           if m is not None:
+             if architectureName == m.group(1):
+               architectureEndFound = True
                 
          #Architecture Error Handling
          #Start Architecture Detection while in architecture
@@ -412,12 +412,12 @@ def parseVhdlFiles(fileList,mode):
          componentLineFound = False
          
          if continueLineAnalysis:
-           if  re.search('^ *component +[A-Za-z0-9_]+ *',line,re.I):
-              m=re.match('^ *component +([A-Za-z0-9_]+) *',line,re.I) 
-              componentName      = m.group(1)
-              componentLineFound = True
-              if verboseMode:
-                print "%05d: Found Component %s" %(lineNumber,componentName)                 
+           m=re.match('^ *component +([A-Za-z0-9_]+) *',line,re.I)
+           if m is not None:
+             componentName      = m.group(1)
+             componentLineFound = True
+             if verboseMode:
+               print "%05d: Found Component %s" %(lineNumber,componentName)
     
                 
          #======================================     
@@ -442,16 +442,16 @@ def parseVhdlFiles(fileList,mode):
 
          #Search for Instanciation Start
          if continueLineAnalysis:
-           if  re.search('^ *([A-Za-z0-9_]+) *: *([A-Za-z0-9_]+) *',line,re.I):
-             m=re.match('^ *([A-Za-z0-9_]+) *: *([A-Za-z0-9_]+) *',line,re.I)
+           m=re.search('^ *([A-Za-z0-9_]+) *: *([A-Za-z0-9_]+) *',line,re.I)
+           if m is not None:
              instanceName = m.group(1)
              instanceEntity = m.group(2)
              instanceNotSure  = True
              
          #Search for Instanciation Start using Already Compiled library    
          if continueLineAnalysis:
-           if  re.search('^ *[A-Za-z0-9_]+ *: *entity +[A-Za-z0-9_]+.+[A-Za-z0-9_]+ *port *map',line,re.I):
-             m=re.match('^ *([A-Za-z0-9_]+) *: *entity +[A-Za-z0-9_]+(.+[A-Za-z0-9_]+) *port *map',line,re.I)
+           m=re.search('^ *([A-Za-z0-9_]+) *: *entity +[A-Za-z0-9_]+(.+[A-Za-z0-9_]+) *port *map',line,re.I)
+           if m is not None:
              instanceName = m.group(1)
              instanceEntity = m.group(2)
              instanceEntity = str.replace(instanceEntity,".","")
@@ -469,19 +469,19 @@ def parseVhdlFiles(fileList,mode):
          
          #Search for Process Start
          if continueLineAnalysis:
-           if  re.search('^ *[A-Za-z0-9_]+ +: +process *\([A-Za-z0-9_ ,]+\) *',line,re.I):
-              m=re.match('^ *([A-Za-z0-9_]+) +: +process *(\([A-Za-z0-9_ ,]+\)) *',line,re.I)
-              processName = m.group(1)
-              processSensitivity = m.group(2)
-              processStartFound = True
-              totalProcessNumber = totalProcessNumber + 1 ;
+           m=re.match('^ *([A-Za-z0-9_]+) +: +process *(\([A-Za-z0-9_ ,]+\)) *',line,re.I)
+           if m is not None:
+             processName = m.group(1)
+             processSensitivity = m.group(2)
+             processStartFound = True
+             totalProcessNumber = totalProcessNumber + 1 ;
          
          #Search for Process End
          if continueLineAnalysis:
-           if  re.search('^ *end +process +[A-Za-z0-9_]+ *',line,re.I):
-              m=re.match('^ *end +process +([A-Za-z0-9_]+) *',line,re.I)
-              if processName == m.group(1):
-                processEndFound =True        
+           m=re.search('^ *end +process +([A-Za-z0-9_]+) *',line,re.I)
+           if m is not None:
+             if processName == m.group(1):
+               processEndFound =True        
                 
          #Process Error Handling
          #Start Process Detection while in process
