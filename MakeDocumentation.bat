@@ -1,2 +1,2 @@
-PythonSources\Vhdl2Doc.py -h
+PythonSources\Vhdl2Doc.py  -v -f
 pause 
