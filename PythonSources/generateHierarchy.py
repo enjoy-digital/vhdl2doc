@@ -115,15 +115,23 @@ def findOrfanEntity ():
   for parseElement in parseInfo:
     
     elementType = parseElement[TYPE_RK]
+    
     if elementType == "entity":
-      entityName    = parseElement[ENTITY_NAME_RK]
-      entityIsOrfan = True
+      entityName     = parseElement[ENTITY_NAME_RK]
+      entityIsOrfan  = True
+      
       for findOrfanElement in parseInfo:
-        findOrfanElementType = findOrfanElement[TYPE_RK]
-        if findOrfanElementType == "component": 
-          componentEntity = findOrfanElement[COMPONENT_NAME_RK]
-          if componentEntity == entityName:
-            entityIsOrfan = False
+        findOrfanElementType     = findOrfanElement[TYPE_RK]
+        findOrfanElementFilename = findOrfanElement[FILENAME_RK]
+        #if findOrfanElementType == "component":
+        #    componentEntity = findOrfanElement[COMPONENT_NAME_RK]
+        #    if componentEntity == entityName:
+        #      entityIsOrfan = False
+        if  findOrfanElementType == "instance":
+            instanceEntity = findOrfanElement[INSTANCE_ENTITY_NAME_RK]
+            if instanceEntity == entityName:
+              entityIsOrfan = False
+
       if entityIsOrfan:
         orfanList.append(entityName)
    
