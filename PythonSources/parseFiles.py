@@ -418,8 +418,8 @@ def parseVhdlFiles(fileList,mode):
              componentLineFound = True
              if verboseMode:
                print "%05d: Found Component %s" %(lineNumber,componentName)
-    
-                
+          
+        
          #======================================     
          #Search for Instanciation " xxx : xxx "
          #======================================
@@ -571,56 +571,81 @@ def parseVhdlFiles(fileList,mode):
          #Library 
          #Structure: [file,lineNumber,"library",libraryName,Null,Null,Null,Null,Null]
          if libraryLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"library",libraryName,"","","","","",""])
+           libraryList = [vhdlFile,lineNumber,"library",libraryName,"","","","","",""]
+           libraryListNoLineNumber = libraryList
+           libraryListNoLineNumber[1] = ""
+           existInParseInfo = False
+           for parseList in parseInfo:
+             parseList[1] = ""
+             if libraryListNoLineNumber == parseList:
+               print "ParseList EQUAL"
+               existInParseInfo = True
+           if existInParseInfo == False:
+             parseInfo.append(libraryList)
           
          #Use 
          #Structure: [file,lineNumber,"use",useName,Null,Null,Null,Null,Null]
          if useLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"use",useName,libraryName,"","","","",""]) 
-         
+           useList = [vhdlFile,lineNumber,"use",useName,libraryName,"","","","",""]
+           useListNoLineNumber = useList
+           useListNoLineNumber[1] = ""
+           existInParseInfo = False
+           for parseList in parseInfo:
+             parseList[1] = ""
+             if useListNoLineNumber == parseList:
+               print "ParseList EQUAL"
+               existInParseInfo = True
+           if existInParseInfo == False:
+             parseInfo.append(useList)
+             
          #Entity 
          #Data Structure: [file,lineNumber,"entity",entityName,"",Null,Null,Null,Null]
          if entityLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"entity",entityName,"","","","","",""])
+           parseInfo.append([vhdlFile,lineNumber,"entity",entityName,"","","","","",""])
           
          #Entity Signal
          #Data Structure: [file,lineNumber,"entitySignal",entitySignalName,entitySignalDirection,entitySignalType,entityName,Null,Null]
          if entitySignalLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"entitySignal",entitySignalName,entitySignalDirection,entitySignalType,entityName,"",""])
+           parseInfo.append([vhdlFile,lineNumber,"entitySignal",entitySignalName,entitySignalDirection,entitySignalType,entityName,"",""])
          
          #Package
          #Data Structure: [file,lineNumber,"package",packageName,Null,Null,Null,Null,Null]
          if packageLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"package",packageName,"","","","","",""])
+           parseInfo.append([vhdlFile,lineNumber,"package",packageName,"","","","","",""])
          
          #Function
          #Data Structure: [file,lineNumber,"function",functionName,packageName,Null,Null,Null,Null]
          if functionLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"function",functionName,packageName,"","","","",""]) 
+           parseInfo.append([vhdlFile,lineNumber,"function",functionName,packageName,"","","","",""]) 
            
          #Architecture 
          #Data Structure: [file,lineNumber,"architecture",architectureName,entityName,Null,Null,Null,Null] 
          if architectureLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"architecture",architectureName,entityName,"","","","",""])
+           parseInfo.append([vhdlFile,lineNumber,"architecture",architectureName,entityName,"","","","",""])
         
          #Component 
          #Data Structure: [file,lineNumber,"component",componentName,architectureName,entityName,Null,Null,Null] 
          if componentLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"component",componentName,architectureName,entityName,"","","",""]) 
+           parseInfo.append([vhdlFile,lineNumber,"component",componentName,architectureName,entityName,"","","",""]) 
          
          #Instance 
          #Data Structure: [file,lineNumber,"instance",instanceName,entityName,Null,Null,Null,Null] 
          if instanceLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"instance",instanceName,instanceEntity,"","","",""])
+           parseInfo.append([vhdlFile,lineNumber,"instance",instanceName,instanceEntity,"","","",""])
                   
          #Process 
          #Data Structure: [file,lineNumber,"process",architectureName,entityName,processName,processSensitivity,Null,Null] 
          if processLineFound:
-          parseInfo.append([vhdlFile,lineNumber,"process",processName,processSensitivity,architectureName,entityName,"",""])
+           parseInfo.append([vhdlFile,lineNumber,"process",processName,processSensitivity,architectureName,entityName,"",""])
+   
    
     #Calc Stat
     totalLineNumber  = totalLineNumber  + lineNumber
     totalErrorNumber = totalErrorNumber + errorNumber  
+ 
+  #Clean ParseInfo
+  
+ 
  
  
   #Fill Stat
