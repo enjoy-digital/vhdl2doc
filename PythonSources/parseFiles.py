@@ -578,7 +578,6 @@ def parseVhdlFiles(fileList,mode):
            for parseList in parseInfo:
              parseList[1] = ""
              if libraryListNoLineNumber == parseList:
-               print "ParseList EQUAL"
                existInParseInfo = True
            if existInParseInfo == False:
              parseInfo.append(libraryList)
@@ -593,7 +592,6 @@ def parseVhdlFiles(fileList,mode):
            for parseList in parseInfo:
              parseList[1] = ""
              if useListNoLineNumber == parseList:
-               print "ParseList EQUAL"
                existInParseInfo = True
            if existInParseInfo == False:
              parseInfo.append(useList)

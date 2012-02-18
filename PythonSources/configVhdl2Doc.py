@@ -81,7 +81,3 @@ sourcesDocDir     = htmlDocDir +"\\"+sourcesDir
 entitiesDocDir    = htmlDocDir +"\\"+entitiesDir
 packagesDocDir    = htmlDocDir +"\\"+packagesDir
 illustationDocDir = htmlDocDir +"\\"+illustationsDir
-
-
-
-
