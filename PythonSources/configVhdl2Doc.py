@@ -33,8 +33,8 @@ import os
 #=================================
 # Version 
 #=================================
-vhdl2DocVersion = "V0.1.1"
-vhdl2DocDate    = "Mon Feb 21 2011"
+vhdl2DocVersion = "V0.1.2"
+vhdl2DocDate    = "Mon Feb 18 2012"
 
 #=================================
 # Options 

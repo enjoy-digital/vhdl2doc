@@ -445,13 +445,6 @@ def generateHomeHtml(designEntity,designHierarchyFileList):
   
   print >> f, "</div>"
   
-  #Show Compliance Overview
-  print >> f, "<h1><img src=\"Style/icons/014.png\">  Compliance Quick Overview</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "[To be done!]"
-
-  
   #Show Design Stats
   print >> f, "<h1><img src=\"Style/icons/012.png\">  Design statistics</h1>"
   print >> f, "</div>"
@@ -590,7 +583,6 @@ def generateAboutHtml():
   print >> f, " - Test & Improve parse engine on more designs and files<br>"
   print >> f, " - Improve hierarchy engine<br>"
   print >> f, " - Improve documentation presentation<br>"
-  print >> f, " - Add Requirement Compliance resume<br>"
   print >> f, " - Add more Documentation Tags<br>"
   print >> f, " - Etc...<br>"
   print >> f, "<br>"
@@ -943,8 +935,8 @@ def generatePackagesHtml(packageName,libraryName,srcDir):
       if str.upper(packageName) == str.upper(packageNameElement):
         packageFilename = parseElement[FILENAME_RK]
         
-  docVhdlFileName = "../"+sourcesDir +"/" + os.path.splitext(os.path.basename(packageFilename))[0]+".html"
-  showVhdlFileName = str.replace(packageFilename,srcDir,"")             
+  docVhdlFileName = "../"+sourcesDir +"/" + os.path.splitext(os.path.basename(packageFilename))[0]+".vhd.html"
+  showVhdlFileName = str.replace(packageFilename,srcDir,"")
   print >> f, "File <a href=\""+docVhdlFileName+"\">"+showVhdlFileName+"</a><br>"
   
   
