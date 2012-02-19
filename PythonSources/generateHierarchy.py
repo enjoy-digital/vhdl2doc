@@ -110,9 +110,9 @@ designHierarchyFileList = []
 def findOrfanEntity ():
 
   orfanList = []
-  print " Searching possible Top..." 
+  print " Searching possible Top..."
   
-  for parseElement in parseInfo:
+  for parseElement in parseInfoReduce:
     
     elementType = parseElement[TYPE_RK]
     
@@ -120,7 +120,7 @@ def findOrfanEntity ():
       entityName     = parseElement[ENTITY_NAME_RK]
       entityIsOrfan  = True
       
-      for findOrfanElement in parseInfo:
+      for findOrfanElement in parseInfoReduce:
         findOrfanElementType     = findOrfanElement[TYPE_RK]
         findOrfanElementFilename = findOrfanElement[FILENAME_RK]
         if  findOrfanElementType == "instance":
@@ -131,7 +131,7 @@ def findOrfanEntity ():
       if entityIsOrfan:
         orfanList.append(entityName)
    
-  return orfanList     
+  return orfanList
   
 #=================================
 # selectOrfanEntity Function
@@ -184,17 +184,17 @@ def findDesignHierarchy(designEntity,currentLevel):
 
   #Search Direct 
   if currentLevel == 0:
-    print " Searching hierarchy of %s ..." %(designEntity)   
+    print " Searching hierarchy of %s ..." %(designEntity)
   
   #Retrieve File Name
-  designEntityFilename = retrieveFilenameElement(parseInfo,"entity",designEntity)
+  designEntityFilename = retrieveFilenameElement(parseInfoReduce,"entity",designEntity)
     
   #=================
   #Search Packages
   #=================
   
   #Find Corresponding Packages
-  for parseInfoElement in parseInfo:
+  for parseInfoElement in parseInfoReduce:
     elementFilename = parseInfoElement[FILENAME_RK]
     elementType     = parseInfoElement[TYPE_RK]
     if compareString(elementFilename,designEntityFilename):
@@ -206,7 +206,7 @@ def findDesignHierarchy(designEntity,currentLevel):
   #=================
   
   #Find Corresponding Instances
-  for parseInfoElement in parseInfo:
+  for parseInfoElement in parseInfoReduce:
     elementFilename = parseInfoElement[FILENAME_RK]
     elementType     = parseInfoElement[TYPE_RK]
     
@@ -279,7 +279,7 @@ def listLibrary(entityFilename):
 
   libraryList = []
 
-  for parseInfoElement in parseInfo:
+  for parseInfoElement in parseInfoReduce:
     
     elementType = parseInfoElement[TYPE_RK]
     
@@ -307,7 +307,7 @@ def listLibrary(entityFilename):
         testUseName = str.replace(testUseName,".all","")
         
         
-        for testParseElement in parseInfo:
+        for testParseElement in parseInfoReduce:
           if testParseElement[TYPE_RK] == "package":
             if testUseName == testParseElement[PACKAGE_NAME_RK]:
               libraryIsInDesign = True

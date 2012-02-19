@@ -15,12 +15,20 @@ import os
 import re
 import sys
 
+
+#Generic Infos Ranks
+FILENAME_RK                    = 0
+LINENUMBER_RK                  = 1
+TYPE_RK                        = 2
+TYPE_NAME_RK                   = 3
+
+
 #=================================
 # Global Variables
 #=================================
 parseInfo = []
+parseInfoReduce = []
 parseStat = []
-
 #=================================
 # parseFiles Function
 #=================================
@@ -641,10 +649,10 @@ def parseVhdlFiles(fileList,mode):
     totalLineNumber  = totalLineNumber  + lineNumber
     totalErrorNumber = totalErrorNumber + errorNumber  
  
-  #Clean ParseInfo
-  
- 
- 
+  #Create a Reduce List of info
+  for parseElt in parseInfo:
+    if parseElt[TYPE_RK] in ["library","use","package","entity","component","instance"]:
+      parseInfoReduce.append(parseElt)
  
   #Fill Stat
   parseStat.append([fileNumber,"Files"])
