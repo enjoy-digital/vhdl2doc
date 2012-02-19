@@ -55,7 +55,6 @@ def dirEntries(dir_name, subdir, *args):
                     fileList.append(dirfile)
         # recursively access file names in subdirectories
         elif os.path.isdir(dirfile) and subdir:
-            print "- Accessing directory:", dirfile
             fileList.extend(dirEntries(dirfile, subdir, *args))
     return fileList
     
@@ -67,6 +66,14 @@ def searchVhdlFiles(dir_name):
   print " Start Searching VHDL files..."
   print "-=====================================================================-"
   return dirEntries(dir_name,True,'vhd')
-   
- 
-   
+
+
+#=================================
+# deletePyVhdlFiles Function
+#=================================
+def deletePyVhdlFiles(fileList):
+  tmpFileList = []
+  for fileElt in fileList:
+    if ".py.vhd" not in fileElt:
+      tmpFileList.append(fileElt)
+  return tmpFileList

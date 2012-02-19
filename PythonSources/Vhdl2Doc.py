@@ -72,10 +72,12 @@ else:
 #=================================
 # Search VHDL Files in Directory
 #=================================
-globalPath = os.curdir + "\\" + localPath
+globalPath = os.path.join(os.curdir,localPath)
 
 #Recursive Search of Files
 fileList = searchVhdlFiles(globalPath)
+fileList = deletePyVhdlFiles(fileList)
+
 
 #=================================
 # Parse VHDL Files

@@ -67,17 +67,16 @@ illustationsDir = "Illustrations"
 #=================================
 # Configuration Html Style
 #=================================
-styleFooterButton = "footerBtn.jpg" 
-
+styleFooterButton = "footerBtn.jpg"      
 
 #=================================
 # Directories configuration
 #    /!\ Don't Touch /!\
 #=================================
-htmlDocDir        = os.curdir  +"\\"+docDirHtml
-latexDocDir       = os.curdir  +"\\"+docDirLatex
-styleDocDir       = htmlDocDir +"\\"+styleDir
-sourcesDocDir     = htmlDocDir +"\\"+sourcesDir
-entitiesDocDir    = htmlDocDir +"\\"+entitiesDir
-packagesDocDir    = htmlDocDir +"\\"+packagesDir
-illustationDocDir = htmlDocDir +"\\"+illustationsDir
+htmlDocDir        = os.path.join(os.curdir,   docDirHtml)
+latexDocDir       = os.path.join(os.curdir,   docDirLatex)
+styleDocDir       = os.path.join(htmlDocDir,  styleDir)
+sourcesDocDir     = os.path.join(htmlDocDir,  sourcesDir)
+entitiesDocDir    = os.path.join(htmlDocDir,  entitiesDir)
+packagesDocDir    = os.path.join(htmlDocDir,  packagesDir)
+illustationDocDir = os.path.join(htmlDocDir,  illustationsDir)

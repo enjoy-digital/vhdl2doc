@@ -14,7 +14,7 @@
 import os
 import re
 import sys
-
+import logging  
 
 #Generic Infos Ranks
 FILENAME_RK                    = 0
@@ -29,6 +29,13 @@ TYPE_NAME_RK                   = 3
 parseInfo = []
 parseInfoReduce = []
 parseStat = []
+
+#=================================
+# Global Variables
+#=================================
+logging.basicConfig(filemode='w',filename='parse.log',format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
+
 #=================================
 # parseFiles Function
 #=================================
@@ -103,8 +110,9 @@ def parseVhdlFiles(fileList,mode):
       detailsIsValid = False
       
       #Message
-      print " Parsing file %s..." %(vhdlFile)
-      print "------------------------------------------------------------------"
+      
+      logging.debug(" Parsing file %s..." %(vhdlFile))
+      logging.debug("------------------------------------------------------------------")
     
       for line in p_vhdlFile:
       
@@ -150,8 +158,7 @@ def parseVhdlFiles(fileList,mode):
             m=re.match('^ *--\* *(.+)',line,re.I)
             commentTag = m.group(1)
             commentTagLineFound = True
-            if verboseMode:
-              print "%05d: Found Comment Tag" %(lineNumber)
+            logging.debug("%05d: Found Comment Tag" %(lineNumber))
          
          #==================================
          #Search for "--* @link [xxx] [xxx]"
@@ -164,8 +171,8 @@ def parseVhdlFiles(fileList,mode):
               linkTagType = m.group(1)
               linkTagName = m.group(2)
               linkTagLineFound = True
-              if verboseMode:
-                print "%05d: Found Link Tag %s %s" %(lineNumber,linkTagType,linkTagName)
+              logging.debug("%05d: Found Link Tag %s %s" %(lineNumber,linkTagType,linkTagName))
+
          #==================================
          #Search for "--* @title xxx"
          #==================================
@@ -176,8 +183,7 @@ def parseVhdlFiles(fileList,mode):
            if m is not None:
              titleTag = m.group(1)
              titleTagLineFound = True
-             if verboseMode:
-               print "%05d: Found Title Tag" %(lineNumber)
+             logging.debug("%05d: Found Title Tag" %(lineNumber))
          
          #==================================
          #Search for "--* @brief xxx"
@@ -189,8 +195,7 @@ def parseVhdlFiles(fileList,mode):
           if m is not None:
             briefTag = m.group(1)
             briefTagLineFound = True
-            if verboseMode:
-              print "%05d: Found Brief Tag" %(lineNumber)
+            logging.debug("%05d: Found Brief Tag" %(lineNumber))
                     
          #==================================
          #Search for "--* @details xxx"
@@ -202,8 +207,7 @@ def parseVhdlFiles(fileList,mode):
            if m is not None:
              detailsTag = m.group(1)
              detailsTagLineFound = True
-             if verboseMode:
-               print "%05d: Found Details Tag" %(lineNumber)
+             logging.debug("%05d: Found Details Tag" %(lineNumber))
          
          #==================================
          #Search for "--* @fig [xxx] [xxx]"
@@ -215,11 +219,9 @@ def parseVhdlFiles(fileList,mode):
            if m is not None:
              figTagName     = m.group(1)
              figTagFilename = m.group(2)
-             figTagLineFound = True 
-             if verboseMode:
-               print "%05d: Found Fig Tag %s" %(lineNumber,figTagName)  
-          
-           
+             figTagLineFound = True
+             logging.debug("%05d: Found Fig Tag %s" %(lineNumber,figTagName))
+
               
          #======================================================================
          # Analysis of VHDL Line  
@@ -245,8 +247,7 @@ def parseVhdlFiles(fileList,mode):
              libraryName      = m.group(1)
              libraryLineFound = True
              continueLineAnalysis = False
-             if verboseMode:
-               print "%05d: Found Library %s" %(lineNumber,libraryName)
+             logging.debug("%05d: Found Library %s" %(lineNumber,libraryName))
          
          #=======================
          #Seach for "use xxx.xxx"
@@ -258,8 +259,7 @@ def parseVhdlFiles(fileList,mode):
            if m is not None:
              useName      = m.group(1)
              useLineFound = True
-             if verboseMode:
-               print "%05d: Found Use %s" %(lineNumber,useName)
+             logging.debug("%05d: Found Use %s" %(lineNumber,useName))
               
          #=========================     
          #Seach for "entity xxx is"
@@ -287,8 +287,7 @@ def parseVhdlFiles(fileList,mode):
                entitySignalDirection = m.group(2)
                entitySignalType      = m.group(3)
                entitySignalLineFound = True
-               if verboseMode:
-                 print "%05d: Found Entity Signal %s " %(lineNumber,entitySignalName)       
+               logging.debug("%05d: Found Entity Signal %s " %(lineNumber,entitySignalName))
               
          #Search for Entity End
          if continueLineAnalysis:
@@ -301,13 +300,13 @@ def parseVhdlFiles(fileList,mode):
          #Start Entity Detection while in entity
          if entityStartFound:
            if isInEntity:
-              print " /!\\Error/!\\ - file:%s line:%d Entity declaration found while already in!" %(vhdlFile,lineNumber)
+              logging.error("/!\\Error/!\\ - file:%s line:%d Entity declaration found while already in!" %(vhdlFile,lineNumber))
               errorNumber = errorNumber + 1
            else:
               isInEntity = True
               entityLineFound = True
               if verboseMode:
-               print "%05d: Found Entity %s" %(lineNumber,entityName)
+               logging.debug("%05d: Found Entity %s" %(lineNumber,entityName))
          if entityEndFound:
            isInEntity = False 
            
@@ -336,13 +335,12 @@ def parseVhdlFiles(fileList,mode):
          #Start Package Detection while in entity
          if packageStartFound:
            if isInPackage:
-              print " /!\\Error/!\\ - file:%s line:%d Package declaration found while already in!" %(vhdlFile,lineNumber)
+              logging.error(" /!\\Error/!\\ - file:%s line:%d Package declaration found while already in!" %(vhdlFile,lineNumber))
               errorNumber = errorNumber + 1
            else:
               isInPackage = True
               packageLineFound = True
-              if verboseMode:
-               print "%05d: Found Package %s" %(lineNumber,packageName)
+              logging.debug("%05d: Found Package %s" %(lineNumber,packageName))
          if packageEndFound:
            isInPackage = False
            
@@ -358,9 +356,7 @@ def parseVhdlFiles(fileList,mode):
                functionName      = m.group(1)
                functionLineFound = True
                totalFunctionNumber = totalFunctionNumber + 1 ;
-                
-               if verboseMode:
-                 print "%05d: Found Function %s" %(lineNumber,functionName)
+               logging.debug("%05d: Found Function %s" %(lineNumber,functionName))
   
          #======================================     
          #Search for "architecture xxx of xxx is"
@@ -396,19 +392,17 @@ def parseVhdlFiles(fileList,mode):
          #Start Architecture Detection while in architecture
          if architectureStartFound:
            if isInArchitecture:
-              print " /!\\Error/!\\ - file:%s line:%d Architecture declaration found while already in!" %(vhdlFile,lineNumber)
+              logging.error(" /!\\Error/!\\ - file:%s line:%d Architecture declaration found while already in!" %(vhdlFile,lineNumber))
               errorNumber = errorNumber + 1
            else:
               isInArchitecure = True
               architectureLineFound = True
-              if verboseMode:
-                print "%05d: Found Architecture %s" %(lineNumber,architectureName)
+              logging.debug("%05d: Found Architecture %s" %(lineNumber,architectureName))
               
          if architectureBeginFound:
            if isInArchitecture:
             isAfterArchitectureBegin = True
-            if verboseMode:
-              print "%05d: Found Architecture Begin" %(lineNumber)
+            logging.debug("%05d: Found Architecture Begin" %(lineNumber))
          
          if architectureEndFound:
            if isInArchitecture:
@@ -424,8 +418,7 @@ def parseVhdlFiles(fileList,mode):
            if m is not None:
              componentName      = m.group(1)
              componentLineFound = True
-             if verboseMode:
-               print "%05d: Found Component %s" %(lineNumber,componentName)
+             logging.debug("%05d: Found Component %s" %(lineNumber,componentName))
           
         
          #======================================     
@@ -438,11 +431,9 @@ def parseVhdlFiles(fileList,mode):
            if  instanceNotSure:
              if  re.search('^ *port map *',line,re.I):
                instanceLineFound = True
-               if verboseMode:
-                 print "%05d: Found Instance %s" %(lineNumber-1,instanceName)
+               logging.debug("%05d: Found Instance %s" %(lineNumber-1,instanceName))
              elif re.search('^ *generic map *',line,re.I):
-               if verboseMode:
-                 print "%05d: Found Instance %s" %(lineNumber-1,instanceName)
+               logging.debug("%05d: Found Instance %s" %(lineNumber-1,instanceName))
                instanceLineFound = True
              else:
                instanceLineFound = False
@@ -495,13 +486,12 @@ def parseVhdlFiles(fileList,mode):
          #Start Process Detection while in process
          if processStartFound:
            if isInProcess:
-              print " /!\\Error/!\\ - file:%s line:%d Process declaration found while already in!" %(vhdlFile,lineNumber)
+              logging.error(" /!\\Error/!\\ - file:%s line:%d Process declaration found while already in!" %(vhdlFile,lineNumber))
               errorNumber = errorNumber + 1
            else:
               isInProcess = True
               processLineFound = True
-              if verboseMode:
-                print "%05d: Found Process %s" %(lineNumber,processName)
+              logging.debug("%05d: Found Process %s" %(lineNumber,processName))
          
          if processEndFound:
            if isInProcess:
