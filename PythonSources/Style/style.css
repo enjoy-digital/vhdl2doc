@@ -1187,7 +1187,7 @@ width:975px;
 
 #footer {
 	width: 1090px;
-	height:210px;
+	height:120px;
 	
 	background-color:#000;
 }
@@ -1203,7 +1203,7 @@ width:975px;
 
 #footerLeftColumn{
 	float:left;
-    margin:52px 0px 0 65px;
+    margin:25px 0px 0 65px;
 	width:450px;
 }
 

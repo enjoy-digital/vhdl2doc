@@ -219,14 +219,11 @@ def generateHtmlFooter(p_file):
   print >> p_file, "back_to_top();"
   print >> p_file, "</script>"
 	
-  print >> p_file,	"<div id=\"footerLeftColumn\">"
-  print >> p_file, "<div id=\"copyInfo\">"
-  print >> p_file,	"CopyLeft 2011 . EnjoyDigital.<br>"
-  print >> p_file, "</div>"
+  print >> p_file,"<div id=\"footerLeftColumn\">"
+  print >> p_file,"<a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/EnjoyDigitalGrayOpenHardware.png\" alt=\"EnjoyDigital\"></a>" %(styleDir)
   print >> p_file, "</div>"
     
   print >> p_file, "<div id=\"footerRightColumn\">"
-  print >> p_file,	"<div id=\"footer_address\">ENJOYDIGITAL<br>"
   print >> p_file,	"<div id=\"footer_contact\"><a href=\"mailto:florent@enjoy-digital.fr\">florent@enjoy-digital.fr</a></div>" 	 
   print >> p_file, "</div>"
   print >> p_file, "</div>"
@@ -239,7 +236,6 @@ def generateHtmlFooter(p_file):
   
   #Close Html
   print >> p_file, "</html>"
-  
 
 #=================================
 # insertVhdlCodeHtml Function
