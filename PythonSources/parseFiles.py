@@ -664,7 +664,6 @@ def parseVhdlFiles(fileList,mode):
   else:
    print " - %d Errors found"  %(totalErrorNumber)
   print "-=====================================================================-"
-  print ""
   
   #Return
   return totalErrorNumber

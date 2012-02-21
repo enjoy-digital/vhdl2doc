@@ -47,8 +47,6 @@ parser.add_option("-v","--verbose",dest="verboseMode",action="store_false", help
 parser.add_option("-f","--force",dest="forceMode",action="store_false", help ="Force Generation on Errors in Parsing")
 (options, args) = parser.parse_args()
 
-print options.designEntity
-
 
 #Get Design Top Entity if defined
 if options.designEntity == None:
@@ -90,7 +88,7 @@ if (errorParse == 0 or forceMode == True):
   # Find Hierarchy in VHDL Files
   #=================================
 
-  print "-=====================================================================-"              
+  print "-=====================================================================-"
   print " Start scrunching and twisting all VHDL Data together..."
   print "-=====================================================================-"
   #Find Orfan Entities
@@ -105,7 +103,7 @@ if (errorParse == 0 or forceMode == True):
   #=================================
   # Generate Html Documentation
   #=================================
-  print "-=====================================================================-"              
+  print "-=====================================================================-"
   print " Start Html Generation..."
   print "-=====================================================================-"
 
@@ -138,7 +136,8 @@ if (errorParse == 0 or forceMode == True):
   #=================================
   # Generate Latex Documentation
   #=================================
-  print "-=====================================================================-"              
+  print "-=====================================================================-"
   print " Start Latex Generation..."
   print "-=====================================================================-"
+  #To Be Done 
   generateDocumentationLatex("documentationLatex.tex")
