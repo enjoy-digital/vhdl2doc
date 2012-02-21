@@ -62,8 +62,8 @@ def prepareHtmlDir(designEntity):
      os.makedirs(dirElement)
   
     #Copy Style Files
-    styleRefDir    = os.curdir  +"\\"+pythonSources+"\\"+styleDir
-    styleLocalDir = dirElement +"\\"+styleDir
+    styleRefDir    = os.path.join(os.curdir,pythonSources,styleDir)
+    styleLocalDir = os.path.join(dirElement,styleDir)
     
     if os.path.exists(styleLocalDir):
       rmtree(styleLocalDir)
@@ -75,7 +75,7 @@ def prepareHtmlDir(designEntity):
     rmtree(illustationDocDir)
      
   #Copy Illustation Files
-  illustationsRefDir = os.curdir  +"\\"+localPathIllustration    
+  illustationsRefDir = os.path.join(os.curdir,localPathIllustration)    
   copytree(illustationsRefDir,illustationDocDir)
   
   #Copy DesignEntity
@@ -273,9 +273,9 @@ def listSourcesHtml(p_file,fileList,designFileList,srcDir):
   designFileListOrdered = listDesignFilesOrdered(fileList,designFileList)
   
   
-  #===============
+  #==================
   # Table Generation
-  #===============
+  #==================
   
   #Open Table
   print >> p_file, "<table border=\"0\">"
@@ -284,7 +284,7 @@ def listSourcesHtml(p_file,fileList,designFileList,srcDir):
   for designFile in designFileListOrdered:
     
     #Doc Filename : Add .html to filename
-    docFilename  = sourcesDir +"/" + os.path.basename(designFile)+".html"
+    docFilename  = os.path.join(sourcesDir,os.path.basename(designFile)+".html")
     
     #Show Filename : Remove Sources Base Directory from filename
     showFilename = str.replace(designFile,srcDir,"")
@@ -309,7 +309,7 @@ def generateSourcesListHtml(fileList,designFileList,srcDir):
   print "------------------------------------------------------------------"
 
   #Open File
-  f = open(htmlDocDir+'\\sources.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'sources.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -337,7 +337,7 @@ def generateSourcesHighlightHtml(designFileList):
   for designFile in designFileList:
   
     #Html Name Determination
-    docVhdlFileName = sourcesDocDir +"\\" + os.path.basename(designFile)+".html" 
+    docVhdlFileName = os.path.join(sourcesDocDir,os.path.basename(designFile)+".html") 
 
     #Open File
     f = open(docVhdlFileName, 'w+')  
@@ -374,7 +374,7 @@ def generateHomeHtml(designEntity,designHierarchyFileList):
   print "------------------------------------------------------------------"
 
    #Open File
-  f = open(htmlDocDir+'\\home.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'home.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -468,7 +468,7 @@ def generateAboutHtml():
   print "------------------------------------------------------------------"
 
   #Open File
-  f = open(htmlDocDir+'\\about.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'about.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -663,7 +663,7 @@ def tagInsertionHtml(f,tagFilename,tagType,tagName,isHome):
 def generateEntitiesHtml(entityName,libraryName,srcDir):
 
   #Open File
-  f = open(entitiesDocDir+'\\'+libraryName+"."+entityName+'.html', 'w+')
+  f = open(os.path.join(entitiesDocDir,libraryName+"."+entityName+'.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -861,7 +861,7 @@ def generateEntitiesListHtml(designFileList,libraryName,srcDir):
   print "------------------------------------------------------------------"
 
   #Open File
-  f = open(htmlDocDir+'\\entities.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'entities.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -910,7 +910,7 @@ def generateEntitiesListHtml(designFileList,libraryName,srcDir):
 def generatePackagesHtml(packageName,libraryName,srcDir):
 
   #Open File
-  f = open(packagesDocDir+'\\'+libraryName+"."+packageName+'.html', 'w+')
+  f = open(os.path.join(packagesDocDir,libraryName+"."+packageName+'.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -1036,7 +1036,7 @@ def generatePackageListHtml(designFileList,libraryName,srcDir):
   print "------------------------------------------------------------------"
 
   #Open File
-  f = open(htmlDocDir+'\\packages.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'packages.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -1080,7 +1080,7 @@ def generateUtilsHtml(designEntity,overviewList):
   print "------------------------------------------------------------------"
 
   #Open File
-  f = open(htmlDocDir+'\\utils.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'utils.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)
@@ -1177,7 +1177,7 @@ def generateDocumentationHtml():
   print "------------------------------------------------------------------"
 
   #Open File
-  f = open(htmlDocDir+'\\documentation.html', 'w+')
+  f = open(os.path.join(htmlDocDir,'documentation.html'), 'w+')
   
   #Generate Html Header
   generateHtmlHeader(f)

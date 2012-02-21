@@ -43,16 +43,16 @@ vhdl2DocDate    = "Mon Feb 18 2012"
 #=================================
 # VHDL Files Directory
 #=================================
-localPath             = "SampleDesign"
-localPathIllustration = "SampleIllustration" 
+localPath             = "./SampleDesign"
+localPathIllustration = "./SampleIllustration" 
 fileType = "vhd"
-pythonSources = "PythonSources"
+pythonSources = "./PythonSources"
 
 #=================================
 # Configuration Html
 #=================================
-docDirHtml      = "Documentation_Html"
-docDirLatex     = "Documentation_Latex"
+docDirHtml      = "./Documentation_Html"
+docDirLatex     = "./Documentation_Latex"
 styleDir        = "Style"
 sourcesDir      = "Sources"
 entitiesDir     = "Entities"

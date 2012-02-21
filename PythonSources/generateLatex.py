@@ -159,7 +159,7 @@ def generateDocumentationLatex(latexFilename):
   prepareLatexDir()
   
   #Open File
-  f = open(latexDocDir+'\\'+latexFilename, 'w+')
+  f = open(os.path.join(latexDocDir,latexFilename), 'w+')
   
   generateConfigurationLatex(f)
   generateFrontPageLatex(f)
