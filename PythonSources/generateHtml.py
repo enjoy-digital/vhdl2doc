@@ -213,7 +213,7 @@ def generateHtmlFooter(p_file):
   
   #Start Footer
   print >> p_file, "<div id=\"footer\">"
-  print >> p_file, "<div id=\"backToTop\"><a href=\"#\"><img src=\"%s/images/%s\" alt=\"EnjoyDigital\" /></a></div>" %(styleDir,styleFooterButton)
+  print >> p_file, "<div id=\"backToTop\"><a href=\"#\"><img src=\"%s/images/footerBtn.jpg\" alt=\"EnjoyDigital\" /></a></div>" %(styleDir)
   
   print >> p_file, "<script language=\"javascript\">"
   print >> p_file, "back_to_top();"
@@ -1096,7 +1096,6 @@ def generateUtilsHtml(designEntity,overviewList):
   print >> f, "</div>"
   print >> f, "<div id=\"contentMini\">"
   print >> f, "Here is the order to compile the design in your simulation or synthesis tool."
-  print >> f, "( You can change the designCompileCommand variable to customize compile command)<br>"
   
   compileFileList = []
    
@@ -1137,7 +1136,7 @@ def generateUtilsHtml(designEntity,overviewList):
                 if compileFileListElement == parseElementFilename:
                   fileAlreadyCompiled = True
               if fileAlreadyCompiled == False:    
-                print >> f, "%s%s"%(designCompileCommand,parseElementFilename)
+                print >> f, "%s"%(parseElementFilename)
                 compileFileList.append(parseElementFilename)
   
   #Compile Top Entity
@@ -1148,17 +1147,9 @@ def generateUtilsHtml(designEntity,overviewList):
     
     if parseElementType == "entity":
       if parseElementName == designEntity:
-        print >> f, "%s%s"%(designCompileCommand,parseElementFilename)
+        print >> f, "%s"%(parseElementFilename)
         compileFileList.append(parseElementFilename)
   print >> f, "</pre>"
-  
-  
-  #Compliance Overview
-  print >> f, "<h1><img src=\"Style/icons/014.png\">  Compliance Overview</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "[To be done!]"
-  print >> f, "<br>"
   
   #Comments,Tags statistics
   print >> f, "<h1><img src=\"Style/icons/012.png\">  Comments, Tags Statistics</h1>"

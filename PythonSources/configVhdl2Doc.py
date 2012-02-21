@@ -49,11 +49,6 @@ fileType = "vhd"
 pythonSources = "PythonSources"
 
 #=================================
-# Design Configuration
-#=================================
-designCompileCommand = "vhdl work "
-
-#=================================
 # Configuration Html
 #=================================
 docDirHtml      = "Documentation_Html"
@@ -63,11 +58,6 @@ sourcesDir      = "Sources"
 entitiesDir     = "Entities"
 packagesDir     = "Packages"
 illustationsDir = "Illustrations"
-
-#=================================
-# Configuration Html Style
-#=================================
-styleFooterButton = "footerBtn.jpg"      
 
 #=================================
 # Directories configuration
