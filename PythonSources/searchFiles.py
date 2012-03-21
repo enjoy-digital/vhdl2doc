@@ -62,9 +62,9 @@ def dirEntries(dir_name, subdir, *args):
 # searchVhdlFiles Function
 #=================================
 def searchVhdlFiles(dir_name):
-  print "-=====================================================================-"
-  print " Start Searching VHDL files..."
-  print "-=====================================================================-"
+  print("-=====================================================================-")
+  print(" Start Searching VHDL files...")
+  print("-=====================================================================-")
   return dirEntries(dir_name,True,'vhd')
 
 

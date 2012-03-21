@@ -56,9 +56,9 @@ def parseVhdlFiles(fileList,mode):
   totalProcessNumber     = 0
   
     
-  print "-=====================================================================-"
-  print " Start Parsing VHDL files..."
-  print "-=====================================================================-"
+  print("-=====================================================================-")
+  print(" Start Parsing VHDL files...")
+  print("-=====================================================================-")
   
   
   #===============
@@ -655,15 +655,15 @@ def parseVhdlFiles(fileList,mode):
   parseStat.append([totalTagLineNumber,"Tag Lines"])
 
   
-  print "-=====================================================================-"
-  print " End Parsing VHDL files"
-  print " - %d Files , %d Lines parsed"  %(fileNumber,totalLineNumber)
+  print("-=====================================================================-")
+  print(" End Parsing VHDL files")
+  print(" - %d Files , %d Lines parsed"  %(fileNumber,totalLineNumber))
   if totalErrorNumber:
-   print " - /!\\%d Errors found/!\\ --> Doc Generation Stop!"  %(totalErrorNumber)
-   print "  Switch to verboseMode to help Errors Fix"
+   print(" - /!\\%d Errors found/!\\ --> Doc Generation Stop!"  %(totalErrorNumber))
+   print("  Switch to verboseMode to help Errors Fix")
   else:
-   print " - %d Errors found"  %(totalErrorNumber)
-  print "-=====================================================================-"
+   print(" - %d Errors found"  %(totalErrorNumber))
+  print("-=====================================================================-")
   
   #Return
   return totalErrorNumber

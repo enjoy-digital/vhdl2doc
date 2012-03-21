@@ -88,9 +88,9 @@ if (errorParse == 0 or forceMode == True):
   # Find Hierarchy in VHDL Files
   #=================================
 
-  print "-=====================================================================-"
-  print " Start scrunching and twisting all VHDL Data together..."
-  print "-=====================================================================-"
+  print("-=====================================================================-")
+  print(" Start scrunching and twisting all VHDL Data together...")
+  print("-=====================================================================-")
   #Find Orfan Entities
   orfanList = findOrfanEntity()
 
@@ -103,9 +103,9 @@ if (errorParse == 0 or forceMode == True):
   #=================================
   # Generate Html Documentation
   #=================================
-  print "-=====================================================================-"
-  print " Start Html Generation..."
-  print "-=====================================================================-"
+  print("-=====================================================================-")
+  print(" Start Html Generation...")
+  print("-=====================================================================-")
 
   #Prepare Directories
   prepareHtmlDir(designEntity)
@@ -136,8 +136,8 @@ if (errorParse == 0 or forceMode == True):
   #=================================
   # Generate Latex Documentation
   #=================================
-  print "-=====================================================================-"
-  print " Start Latex Generation..."
-  print "-=====================================================================-"
+  print("-=====================================================================-")
+  print(" Start Latex Generation...")
+  print("-=====================================================================-")
   #To Be Done 
   generateDocumentationLatex("documentationLatex.tex")

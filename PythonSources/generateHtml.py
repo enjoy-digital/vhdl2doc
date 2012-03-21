@@ -109,38 +109,38 @@ def generateHtmlHeader(p_file):
       docTitle = dataString                     
              
   #Write HtmlHeader
-  print >> p_file, "<html>"
-  print >> p_file, " <head>"
-  print >> p_file, "  <title>VHDL Documentation %s</title>" %(docTitle)
+  print("<html>", file=p_file)
+  print(" <head>", file=p_file)
+  print("  <title>VHDL Documentation %s</title>" %(docTitle), file=p_file)
   
-  print >> p_file, "  <link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"style\" href=\"%s/style.css\" />" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/shCore.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/shBrushVhdl.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/jquery.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/jquery_002.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/footer.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/ga.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/aboutSlider.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/protovis-d3.js\"></script>" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\" src=\"hierarchy.js\"></script>"
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/plot_hierarchy.js\"></script>" %(styleDir) 
-  print >> p_file, "  <script type=\"text/javascript\" src=\"%s/javascript/back_to_top.js\"></script>" %(styleDir)
+  print("  <link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"style\" href=\"%s/style.css\" />" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/shCore.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/shBrushVhdl.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/jquery.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/jquery_002.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/footer.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/ga.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/aboutSlider.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/protovis-d3.js\"></script>" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\" src=\"hierarchy.js\"></script>", file=p_file)
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/plot_hierarchy.js\"></script>" %(styleDir), file=p_file) 
+  print("  <script type=\"text/javascript\" src=\"%s/javascript/back_to_top.js\"></script>" %(styleDir), file=p_file)
    
-  print >> p_file, "  <link rel=\"stylesheet\" type=\"text/css\" href=\"%s/javascript/shCore.css\" />" %(styleDir)
-  print >> p_file, "  <link rel=\"stylesheet\" type=\"text/css\" href=\"%s/javascript/shThemeDefault.css\" />" %(styleDir)
-  print >> p_file, "  <script type=\"text/javascript\">SyntaxHighlighter.all();</script>"
-  print >> p_file, " </head>"
-  print >> p_file, "<body>"
+  print("  <link rel=\"stylesheet\" type=\"text/css\" href=\"%s/javascript/shCore.css\" />" %(styleDir), file=p_file)
+  print("  <link rel=\"stylesheet\" type=\"text/css\" href=\"%s/javascript/shThemeDefault.css\" />" %(styleDir), file=p_file)
+  print("  <script type=\"text/javascript\">SyntaxHighlighter.all();</script>", file=p_file)
+  print(" </head>", file=p_file)
+  print("<body>", file=p_file)
           
-  print >> p_file, "<div id=\"wrapper\">"
-  print >> p_file, " <div id=\"headwrap\">"	
-  print	>> p_file, "	  <div class=\"logo\">"
-  print	>> p_file, " 	   <a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/Vhdl2Doc.png\" alt=\"EnjoyDigital\"></a>" %(styleDir)
-  print	>> p_file, "   </div>"
-  print	>> p_file, "   <div id=\"bigTitleCenter\">%s</div>" %(docTitle)
-  print	>> p_file, "	</div>"
+  print("<div id=\"wrapper\">", file=p_file)
+  print(" <div id=\"headwrap\">", file=p_file)	
+  print("	  <div class=\"logo\">", file=p_file)
+  print(" 	   <a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/Vhdl2Doc.png\" alt=\"EnjoyDigital\"></a>" %(styleDir), file=p_file)
+  print("   </div>", file=p_file)
+  print("   <div id=\"bigTitleCenter\">%s</div>" %(docTitle), file=p_file)
+  print("	</div>", file=p_file)
   
-  print >> p_file, "<div id=\"content\">"
+  print("<div id=\"content\">", file=p_file)
 	
 #=================================
 # generateHtmlFilter Function
@@ -169,17 +169,17 @@ def generateHtmlFilter(p_file,active,indentLevel):
        
 
   #Write HtmlFilter
-  print >> p_file, "<div id=\"worksFilter\" style=\"display: yes;\">"
-  print >> p_file, "<ul id=\"filter\" >"
+  print("<div id=\"worksFilter\" style=\"display: yes;\">", file=p_file)
+  print("<ul id=\"filter\" >", file=p_file)
   
   for htmlFilterElement in htmlFilter:
     if active == htmlFilterElement:
-      print	>> p_file, "<li class=\"active\" id=\"%s\"><a href=\"%s%s.html\" >%s</a></li>" %(htmlFilterElement,rel,str.lower(htmlFilterElement),htmlFilterElement)
+      print("<li class=\"active\" id=\"%s\"><a href=\"%s%s.html\" >%s</a></li>" %(htmlFilterElement,rel,str.lower(htmlFilterElement),htmlFilterElement), file=p_file)
     else:
-      print	>> p_file, "<li id=\"%s\"><a href=\"%s%s.html\" >%s</a></li>" %(htmlFilterElement,rel,str.lower(htmlFilterElement),htmlFilterElement)
+      print("<li id=\"%s\"><a href=\"%s%s.html\" >%s</a></li>" %(htmlFilterElement,rel,str.lower(htmlFilterElement),htmlFilterElement), file=p_file)
          	
-  print >> p_file, "</ul>" 
-  print >> p_file, "</div>"
+  print("</ul>", file=p_file) 
+  print("</div>", file=p_file)
   
      
 #=================================
@@ -195,47 +195,47 @@ def generateHtmlFooter(p_file):
   now = datetime.datetime.fromtimestamp(EpochSeconds)
   
   #Presentation
-  print >> p_file, "<br>"
-  print >> p_file, "<br>"
-  print >> p_file, "<br>"
+  print("<br>", file=p_file)
+  print("<br>", file=p_file)
+  print("<br>", file=p_file)
   
   #Insert Date / Link / Version
-  print >> p_file, "Generated on  %s with <a" %(now.ctime())
-  print >> p_file, "href=\"http://www.enjoy-digital.fr/\">EnjoyDigital VHDL2Doc</a>"
-  print >> p_file, vhdl2DocVersion
+  print("Generated on  %s with <a" %(now.ctime()), file=p_file)
+  print("href=\"http://www.enjoy-digital.fr/\">EnjoyDigital VHDL2Doc</a>", file=p_file)
+  print(vhdl2DocVersion, file=p_file)
   
   #Presentation
-  print >> p_file, "<br>"
-  print >> p_file, "<br>"
+  print("<br>", file=p_file)
+  print("<br>", file=p_file)
   
   #Close Content
-  print >> p_file, "</div>"
+  print("</div>", file=p_file)
   
   #Start Footer
-  print >> p_file, "<div id=\"footer\">"
-  print >> p_file, "<div id=\"backToTop\"><a href=\"#\"><img src=\"%s/images/footerBtn.jpg\" alt=\"EnjoyDigital\" /></a></div>" %(styleDir)
+  print("<div id=\"footer\">", file=p_file)
+  print("<div id=\"backToTop\"><a href=\"#\"><img src=\"%s/images/footerBtn.jpg\" alt=\"EnjoyDigital\" /></a></div>" %(styleDir), file=p_file)
   
-  print >> p_file, "<script language=\"javascript\">"
-  print >> p_file, "back_to_top();"
-  print >> p_file, "</script>"
+  print("<script language=\"javascript\">", file=p_file)
+  print("back_to_top();", file=p_file)
+  print("</script>", file=p_file)
 	
-  print >> p_file,"<div id=\"footerLeftColumn\">"
-  print >> p_file,"<a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/EnjoyDigitalGrayOpenHardware.png\" alt=\"EnjoyDigital\"></a>" %(styleDir)
-  print >> p_file, "</div>"
+  print("<div id=\"footerLeftColumn\">", file=p_file)
+  print("<a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/EnjoyDigitalGrayOpenHardware.png\" alt=\"EnjoyDigital\"></a>" %(styleDir), file=p_file)
+  print("</div>", file=p_file)
     
-  print >> p_file, "<div id=\"footerRightColumn\">"
-  print >> p_file,	"<div id=\"footer_contact\"><a href=\"mailto:florent@enjoy-digital.fr\">florent@enjoy-digital.fr</a></div>" 	 
-  print >> p_file, "</div>"
-  print >> p_file, "</div>"
+  print("<div id=\"footerRightColumn\">", file=p_file)
+  print("<div id=\"footer_contact\"><a href=\"mailto:florent@enjoy-digital.fr\">florent@enjoy-digital.fr</a></div>", file=p_file) 	 
+  print("</div>", file=p_file)
+  print("</div>", file=p_file)
   
   #Close Footer
-  print >> p_file, "</div>"
+  print("</div>", file=p_file)
   
   #Close Body
-  print >> p_file, "</body>"
+  print("</body>", file=p_file)
   
   #Close Html
-  print >> p_file, "</html>"
+  print("</html>", file=p_file)
 
 #=================================
 # insertVhdlCodeHtml Function
@@ -243,16 +243,16 @@ def generateHtmlFooter(p_file):
 def insertVhdlCodeHtml(p_file,vhdlFile):
 
   #Call of SyntaxHilighter
-  print >> p_file, "<pre class=\"brush: vhdl;\">"
+  print("<pre class=\"brush: vhdl;\">", file=p_file)
   
   #Open Vhdl File
   with open(vhdlFile) as p_vhdlFile:
     
     #Read each line
     for line in p_vhdlFile:
-      print >> p_file, "%s" %(line),
+      print("%s" %(line), end=' ', file=p_file)
   
-  print >> p_file,"</pre>"
+  print("</pre>", file=p_file)
 
 
 #=================================
@@ -263,10 +263,10 @@ def listSourcesHtml(p_file,fileList,designFileList,srcDir):
   #===============
   # Presentation
   #===============
-  print >> p_file, "<h1><img src=\"Style/icons/021.png\">  Source file overview</h1>"
-  print >> p_file, "<p>The file paths link to HTML pages showing the sources; the links in brackets point to the actual source files.</p>"
-  print >> p_file, "</div>"
-  print >> p_file, "<div id=\"contentMini\">"
+  print("<h1><img src=\"Style/icons/021.png\">  Source file overview</h1>", file=p_file)
+  print("<p>The file paths link to HTML pages showing the sources; the links in brackets point to the actual source files.</p>", file=p_file)
+  print("</div>", file=p_file)
+  print("<div id=\"contentMini\">", file=p_file)
 
 
   #Generate Ordered File List
@@ -278,7 +278,7 @@ def listSourcesHtml(p_file,fileList,designFileList,srcDir):
   #==================
   
   #Open Table
-  print >> p_file, "<table border=\"0\">"
+  print("<table border=\"0\">", file=p_file)
   
   #Start Loop
   for designFile in designFileListOrdered:
@@ -290,13 +290,13 @@ def listSourcesHtml(p_file,fileList,designFileList,srcDir):
     showFilename = str.replace(designFile,srcDir,"")
   
     #Presentation
-    print >> p_file, "<tr>"
-    print >> p_file, "<td>"
-    print >> p_file, "<a href=\"%s\">%s</a>&nbsp;&nbsp;&nbsp;</td>" %(docFilename,showFilename)
-    print >> p_file, "</tr>"                                                                                                                             
+    print("<tr>", file=p_file)
+    print("<td>", file=p_file)
+    print("<a href=\"%s\">%s</a>&nbsp;&nbsp;&nbsp;</td>" %(docFilename,showFilename), file=p_file)
+    print("</tr>", file=p_file)                                                                                                                             
         
   #Close Table
-  print >> p_file, "</table>"
+  print("</table>", file=p_file)
   
   
 #=================================
@@ -305,8 +305,8 @@ def listSourcesHtml(p_file,fileList,designFileList,srcDir):
 def generateSourcesListHtml(fileList,designFileList,srcDir):
 
   #Message
-  print " Start Sources Generation"
-  print "------------------------------------------------------------------"
+  print(" Start Sources Generation")
+  print("------------------------------------------------------------------")
 
   #Open File
   f = open(os.path.join(htmlDocDir,'sources.html'), 'w+')
@@ -349,9 +349,9 @@ def generateSourcesHighlightHtml(designFileList):
     generateHtmlFilter(f,"Sources",1)
     
     #Show FileName
-    print >> f, "<h1><img src=\"Style/icons/028.png\">  Source file %s</h1>" %(os.path.basename(designFile))
-    print >> f, "</div>"
-    print >> f, "<div id=\"contentMini\">"
+    print("<h1><img src=\"Style/icons/028.png\">  Source file %s</h1>" %(os.path.basename(designFile)), file=f)
+    print("</div>", file=f)
+    print("<div id=\"contentMini\">", file=f)
 
     #Syntax Highlighing
     insertVhdlCodeHtml(f,designFile)
@@ -370,8 +370,8 @@ def generateSourcesHighlightHtml(designFileList):
 def generateHomeHtml(designEntity,designHierarchyFileList):
   
   #Message
-  print " Start Home Generation"
-  print "------------------------------------------------------------------"
+  print(" Start Home Generation")
+  print("------------------------------------------------------------------")
 
    #Open File
   f = open(os.path.join(htmlDocDir,'home.html'), 'w+')
@@ -383,9 +383,9 @@ def generateHomeHtml(designEntity,designHierarchyFileList):
   generateHtmlFilter(f,"Home",0)
   
   #Show Project Description
-  print >> f, "<h1><img src=\"Style/icons/019.png\">  Design brief</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h1><img src=\"Style/icons/019.png\">  Design brief</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   designFilename = retrieveFilenameElement(parseInfo,"entity",designEntity)
   tagInsertionHtml(f,designFilename,"entity",designEntity,True)
 
@@ -398,14 +398,14 @@ def generateHomeHtml(designEntity,designHierarchyFileList):
   #print >> f, "<br>"
   
   #Show Hierarchy Overview Html
-  print >> f, "<h1><img src=\"Style/icons/024.png\">  Hierarchy Quick Overview</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "<div id=\"contentHierarchy\">"
+  print("<h1><img src=\"Style/icons/024.png\">  Hierarchy Quick Overview</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("<div id=\"contentHierarchy\">", file=f)
   
   
-  print >> f, "<b>[<a href=\"%s\" target=\"_blank\" >%s</a>]</b>:" %("Entities/work."+designEntity+".html",designEntity)
-  print >> f, "<br>" 
+  print("<b>[<a href=\"%s\" target=\"_blank\" >%s</a>]</b>:" %("Entities/work."+designEntity+".html",designEntity), file=f)
+  print("<br>", file=f) 
   #Loop on designHierarchyFileList
   for designHierarchyElement in designHierarchyFileList:
     designLevel = designHierarchyElement[HIERARCHY_LEVEL_RK]
@@ -420,36 +420,36 @@ def generateHomeHtml(designEntity,designHierarchyFileList):
     
     
     for i in range(designLevel):
-      print >> f, "&nbsp&nbsp|"
+      print("&nbsp&nbsp|", file=f)
       
-    print >> f, "&nbsp&nbsp+"  
+    print("&nbsp&nbsp+", file=f)  
     
     if designType == "instance":
       if isEntityLinkTo(designName):          
-        print >> f, "<b>[<a href=\"%s\" target=\"_blank\">%s</a>]</b>:" %("Entities/work."+designName+".html",designName)
+        print("<b>[<a href=\"%s\" target=\"_blank\">%s</a>]</b>:" %("Entities/work."+designName+".html",designName), file=f)
       else:
-        print >> f, "<b>[%s]</b>:" %designName
+        print("<b>[%s]</b>:" %designName, file=f)
       
     else:
       m=re.match('^([A-Za-z0-9_]+)\.([A-Za-z0-9_]+)\.([A-Za-z0-9_]+)',designName,re.I)
       if compareString(m.group(1),"ieee"):
-        print >> f, "<i>%s.%s.%s</i>:" %(m.group(1),m.group(2),m.group(3))
+        print("<i>%s.%s.%s</i>:" %(m.group(1),m.group(2),m.group(3)), file=f)
       else:
-        print >> f, "<i>%s.[<a href=\"%s\" target=\"_blank\">%s</a>].%s</i>:" %(m.group(1),"Packages/"+m.group(1)+"."+m.group(2)+".html",m.group(2),m.group(3))
+        print("<i>%s.[<a href=\"%s\" target=\"_blank\">%s</a>].%s</i>:" %(m.group(1),"Packages/"+m.group(1)+"."+m.group(2)+".html",m.group(2),m.group(3)), file=f)
         
-    print >> f, "<br>"   
+    print("<br>", file=f)   
   
-  print >> f, "</div>"
+  print("</div>", file=f)
   
   #Show Design Stats
-  print >> f, "<h1><img src=\"Style/icons/012.png\">  Design statistics</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "Statistics based on parsed files<br><br>"
+  print("<h1><img src=\"Style/icons/012.png\">  Design statistics</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("Statistics based on parsed files<br><br>", file=f)
   for parseStatElement in parseStat: 
-    print >> f, "Nb %s : %s<br>" %(parseStatElement[1],parseStatElement[0])
+    print("Nb %s : %s<br>" %(parseStatElement[1],parseStatElement[0]), file=f)
   
-  print >> f, "<br>"
+  print("<br>", file=f)
   
   
   #Generate Html Footer
@@ -464,8 +464,8 @@ def generateHomeHtml(designEntity,designHierarchyFileList):
 #======================================
 def generateAboutHtml():
   #Message
-  print " Start About Generation"
-  print "------------------------------------------------------------------"
+  print(" Start About Generation")
+  print("------------------------------------------------------------------")
 
   #Open File
   f = open(os.path.join(htmlDocDir,'about.html'), 'w+')
@@ -477,118 +477,118 @@ def generateAboutHtml():
   generateHtmlFilter(f,"About",0)
   
   #Why Vhdl2Doc
-  print >> f, "<h1><img src=\"Style/icons/023.png\">  Why Vhdl2Doc?</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "I'm sometimes a bit lazy and have search last year on the net for an automatic documentation for VHDL code without success."
-  print >> f, "That's why I decided to develop my own tool, I hope it will be useful for someone else ;-)"
+  print("<h1><img src=\"Style/icons/023.png\">  Why Vhdl2Doc?</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("I'm sometimes a bit lazy and have search last year on the net for an automatic documentation for VHDL code without success.", file=f)
+  print("That's why I decided to develop my own tool, I hope it will be useful for someone else ;-)", file=f)
   
   #What can be done with Vhdl2Doc
-  print >> f, "<h1><img src=\"Style/icons/023.png\"> How can Vhdl2Doc be useful?</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "Vhdl2Doc is useful for automatic VHDL documentation."
-  print >> f, "It can be used for a new project where specifics Tags will be used",
-  print >> f, "to enhance documentation (Comments, Descriptions, Schematics, Synoptics,etc... See Below)"
-  print >> f, "It can also be used to understand old projects where documentation is lost or very brief, it will allow to recover easily",
-  print >> f, "design hierarchy, to navigates in entities, packages, etc..."
+  print("<h1><img src=\"Style/icons/023.png\"> How can Vhdl2Doc be useful?</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("Vhdl2Doc is useful for automatic VHDL documentation.", file=f)
+  print("It can be used for a new project where specifics Tags will be used", end=' ', file=f)
+  print("to enhance documentation (Comments, Descriptions, Schematics, Synoptics,etc... See Below)", file=f)
+  print("It can also be used to understand old projects where documentation is lost or very brief, it will allow to recover easily", end=' ', file=f)
+  print("design hierarchy, to navigates in entities, packages, etc...", file=f)
   
   #How it Works
-  print >> f, "<h1><img src=\"Style/icons/023.png\"> How it works?</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print	>> f, "<img src=\"%s/images/Vhdl2DocSynoptic.png\" alt=\"EnjoyDigital\">" %(styleDir)
-  print >> f, "Vhdl2Doc is developped in Python."
-  print >> f, "You put all your VHDL files in a folder, Vhdl2Doc search the Vhdl files in this folder, analyse the files,"
-  print >> f, "find the optional documentation Tags you put in the code, etc..."
-  print >> f, "Once it's done, it propose you the possible design Top found in the repertory, you choose it and it will do the rest."
+  print("<h1><img src=\"Style/icons/023.png\"> How it works?</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("<img src=\"%s/images/Vhdl2DocSynoptic.png\" alt=\"EnjoyDigital\">" %(styleDir), file=f)
+  print("Vhdl2Doc is developped in Python.", file=f)
+  print("You put all your VHDL files in a folder, Vhdl2Doc search the Vhdl files in this folder, analyse the files,", file=f)
+  print("find the optional documentation Tags you put in the code, etc...", file=f)
+  print("Once it's done, it propose you the possible design Top found in the repertory, you choose it and it will do the rest.", file=f)
   
   #Documentation Tags examples
   #Comments
-  print >> f, "<h1><img src=\"Style/icons/022.png\"> Documentation Tags examples:</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "<h2>Insertion of Comments in the documentation:</h2>"
-  print >> f, "<pre class=\"brush: vhdl;\">"
-  print >> f, "  --* This process defines a counter.  This is just to demonstrate"
-  print >> f, "  --* how Vhdl2Doc documentation comments can extend over several "
-  print >> f, "  --* comment lines."
-  print >> f, "  --*"""
-  print >> f, "  --* Here is a second paragraph, again designed to show"
-  print >> f, "  --* how to write documentation for Vhdl2Doc."
-  print >> f, "  Counter_p : process( rst_n, clk ) is"
-  print >> f, "  begin"
-  print >> f, "    if rst_n = '0' then "
-  print >> f, "      counter <= (others => '0');"
-  print >> f, "    elsif rising_edge(clk) then "
-  print >> f, "      counter <= counter + 1;"
-  print >> f, "    end if;  "
-  print >> f, "  end process Counter_p; "
-  print >> f, "</pre>"
-  print >> f, "<br>"
+  print("<h1><img src=\"Style/icons/022.png\"> Documentation Tags examples:</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("<h2>Insertion of Comments in the documentation:</h2>", file=f)
+  print("<pre class=\"brush: vhdl;\">", file=f)
+  print("  --* This process defines a counter.  This is just to demonstrate", file=f)
+  print("  --* how Vhdl2Doc documentation comments can extend over several ", file=f)
+  print("  --* comment lines.", file=f)
+  print("  --*""", file=f)
+  print("  --* Here is a second paragraph, again designed to show", file=f)
+  print("  --* how to write documentation for Vhdl2Doc.", file=f)
+  print("  Counter_p : process( rst_n, clk ) is", file=f)
+  print("  begin", file=f)
+  print("    if rst_n = '0' then ", file=f)
+  print("      counter <= (others => '0');", file=f)
+  print("    elsif rising_edge(clk) then ", file=f)
+  print("      counter <= counter + 1;", file=f)
+  print("    end if;  ", file=f)
+  print("  end process Counter_p; ", file=f)
+  print("</pre>", file=f)
+  print("<br>", file=f)
   
   #Description
-  print >> f, "<h2>Insertion of detailed information:</h2>"
-  print >> f, "<pre class=\"brush: vhdl;\">"
+  print("<h2>Insertion of detailed information:</h2>", file=f)
+  print("<pre class=\"brush: vhdl;\">", file=f)
   
-  print >> f, "--------------------------------------------------------------------------------"
-  print >> f, "--                            Entite                                            "
-  print >> f, "--------------------------------------------------------------------------------"
-  print >> f, "--* @link     [entity] [PwmDeadTime]                                             "
-  print >> f, "--* @brief    Ce module gere la protection sur la commuation des Mos de pont en H"
-  print >> f, "--* @details  Il realise:                                                         "
-  print >> f, "--* @details  - l'inversion des signaux de commandes des Mos High et Low          "
-  print >> f, "--* @fig      [Inversion Mos High et Low] [Inversion_Mos_High_Low.png]            "
-  print >> f, "--* @details  - l'application d'un retard a la commutation pour compenser le delai"
-  print >> f, "--*           de desactivation du Mos et eviter les bref courts circuits.         "
-  print >> f, "--* @fig      [Retard a la commutation] [Retard_A_La_Commutation.png]             "
-  print >> f, "--------------------------------------------------------------------------------  "
-  print >> f, "entity PwmDeadTime is                                                             "
-  print >> f, "generic (                                                                         "
-  print >> f, "  PWM_NB     : natural := 3;          -- Nombre de voies PWM                      "
-  print >> f, "  CLK_PERIOD : real    := 33.0;       -- Periode de l'horloge (ns)                "
-  print >> f, "  DEAD_TIME  : real    := 0.6);       -- Dead Time Commutation Mos (us)           "
-  print >> f, "port (                                                                            "
-  print >> f, "   clk             : in std_logic;                                                "
-  print >> f, "  rst_n           : in std_logic;                                                 "
-  print >> f, "  switch_n        : in std_logic;                                                 "
-  print >> f, "  pwmNoDeadTime   : in unsigned(PWM_NB-1 downto 0);                               "
-  print >> f, "  pwmWithDeadTime : in unsigned(2*PWM_NB-1 downto 0)                              "
-  print >> f, "  );                                                                              "
-  print >> f, "end PwmDeadTime;                                                                  "
-  print >> f, "</pre>"
-  print >> f, "<br>"
-  print >> f, "Here are some examples of Tags use:<br>"
-  print >> f, "- Use @link    Tag to link the next Tags to specific Element<br>"
-  print >> f, "- Use @brief   Tag to insert brief of the Elemetn(entity,package,process,instance,etc...)<br>"
-  print >> f, "- Use @details Tag to insert more information about the element.<br>"
-  print >> f, "- Use @req     Tag to specify to which requirement the element belongs.<br>"
-  print >> f, "- Use @version Tag to specify to which version of the requirement the element belongs.<br>"
-  print >> f, "- Use @fig     Tag to insert a figure of a schematic, synoptic, chronogram...<br>"
-  print >> f, "Each Tags can be used more than one time for each element<br>"
-  print >> f, "<br>"
-  print >> f, "link is valid until a non-comment line is found<br>"
+  print("--------------------------------------------------------------------------------", file=f)
+  print("--                            Entite                                            ", file=f)
+  print("--------------------------------------------------------------------------------", file=f)
+  print("--* @link     [entity] [PwmDeadTime]                                             ", file=f)
+  print("--* @brief    Ce module gere la protection sur la commuation des Mos de pont en H", file=f)
+  print("--* @details  Il realise:                                                         ", file=f)
+  print("--* @details  - l'inversion des signaux de commandes des Mos High et Low          ", file=f)
+  print("--* @fig      [Inversion Mos High et Low] [Inversion_Mos_High_Low.png]            ", file=f)
+  print("--* @details  - l'application d'un retard a la commutation pour compenser le delai", file=f)
+  print("--*           de desactivation du Mos et eviter les bref courts circuits.         ", file=f)
+  print("--* @fig      [Retard a la commutation] [Retard_A_La_Commutation.png]             ", file=f)
+  print("--------------------------------------------------------------------------------  ", file=f)
+  print("entity PwmDeadTime is                                                             ", file=f)
+  print("generic (                                                                         ", file=f)
+  print("  PWM_NB     : natural := 3;          -- Nombre de voies PWM                      ", file=f)
+  print("  CLK_PERIOD : real    := 33.0;       -- Periode de l'horloge (ns)                ", file=f)
+  print("  DEAD_TIME  : real    := 0.6);       -- Dead Time Commutation Mos (us)           ", file=f)
+  print("port (                                                                            ", file=f)
+  print("   clk             : in std_logic;                                                ", file=f)
+  print("  rst_n           : in std_logic;                                                 ", file=f)
+  print("  switch_n        : in std_logic;                                                 ", file=f)
+  print("  pwmNoDeadTime   : in unsigned(PWM_NB-1 downto 0);                               ", file=f)
+  print("  pwmWithDeadTime : in unsigned(2*PWM_NB-1 downto 0)                              ", file=f)
+  print("  );                                                                              ", file=f)
+  print("end PwmDeadTime;                                                                  ", file=f)
+  print("</pre>", file=f)
+  print("<br>", file=f)
+  print("Here are some examples of Tags use:<br>", file=f)
+  print("- Use @link    Tag to link the next Tags to specific Element<br>", file=f)
+  print("- Use @brief   Tag to insert brief of the Elemetn(entity,package,process,instance,etc...)<br>", file=f)
+  print("- Use @details Tag to insert more information about the element.<br>", file=f)
+  print("- Use @req     Tag to specify to which requirement the element belongs.<br>", file=f)
+  print("- Use @version Tag to specify to which version of the requirement the element belongs.<br>", file=f)
+  print("- Use @fig     Tag to insert a figure of a schematic, synoptic, chronogram...<br>", file=f)
+  print("Each Tags can be used more than one time for each element<br>", file=f)
+  print("<br>", file=f)
+  print("link is valid until a non-comment line is found<br>", file=f)
   
   #Todo List and limitations
-  print >> f, "<h1><img src=\"Style/icons/016.png\">  Todo List and Limitations: (Vhdl2Doc %s , %s)</h1>" %(vhdl2DocVersion,vhdl2DocDate)
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "<h2>Todo</h2><br>"
-  print >> f, " - Code Latex engine to generate PostScript,Pdf documentation<br>"
-  print >> f, " - Move parts of hierarchy search done in Html Generation to Hierarchy engine(For Reuse in Latex)<br>"
-  print >> f, " - Test & Improve parse engine on more designs and files<br>"
-  print >> f, " - Improve hierarchy engine<br>"
-  print >> f, " - Improve documentation presentation<br>"
-  print >> f, " - Add more Documentation Tags<br>"
-  print >> f, " - Etc...<br>"
-  print >> f, "<br>"
-  print >> f, "You have ideas to improve Vhdl2Doc or want a specific function, feel free to contact me!<br>"
+  print("<h1><img src=\"Style/icons/016.png\">  Todo List and Limitations: (Vhdl2Doc %s , %s)</h1>" %(vhdl2DocVersion,vhdl2DocDate), file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("<h2>Todo</h2><br>", file=f)
+  print(" - Code Latex engine to generate PostScript,Pdf documentation<br>", file=f)
+  print(" - Move parts of hierarchy search done in Html Generation to Hierarchy engine(For Reuse in Latex)<br>", file=f)
+  print(" - Test & Improve parse engine on more designs and files<br>", file=f)
+  print(" - Improve hierarchy engine<br>", file=f)
+  print(" - Improve documentation presentation<br>", file=f)
+  print(" - Add more Documentation Tags<br>", file=f)
+  print(" - Etc...<br>", file=f)
+  print("<br>", file=f)
+  print("You have ideas to improve Vhdl2Doc or want a specific function, feel free to contact me!<br>", file=f)
   
-  print >> f, "<h2>Limitations</h2><br>"
-  print >> f, " - More tests needs to be done one each engine(Parse,Hierarchy)<br>"
-  print >> f, " - I'have test those engines on several designs. Still, it is possible that your"
-  print >> f, "design may be incorrectly parsed. If so, you can help me greatly by sending me a copy of"
-  print >> f, "the VHDL files witch failed to be parsed"
+  print("<h2>Limitations</h2><br>", file=f)
+  print(" - More tests needs to be done one each engine(Parse,Hierarchy)<br>", file=f)
+  print(" - I'have test those engines on several designs. Still, it is possible that your", file=f)
+  print("design may be incorrectly parsed. If so, you can help me greatly by sending me a copy of", file=f)
+  print("the VHDL files witch failed to be parsed", file=f)
 
   
   #Generate Html Footer
@@ -623,37 +623,37 @@ def tagInsertionHtml(f,tagFilename,tagType,tagName,isHome):
       #In Entity?
       if tagType == "entity":
           if dataIsValid:
-            print >> f, "<h2>"+dataString+"</h2>"
+            print("<h2>"+dataString+"</h2>", file=f)
           else:
-            print >> f, "<br>"
-            print >> f, "<h2>"+dataString+"</h2>"
+            print("<br>", file=f)
+            print("<h2>"+dataString+"</h2>", file=f)
       #Or something else
       else: 
           if not dataIsValid:
             if firstBrief == False:
-              print >> f, "<br>"
-              print >> f, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dataString
+              print("<br>", file=f)
+              print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dataString, file=f)
             else:
-              print >> f, "&nbsp;&nbsp;&nbsp;&nbsp;"+dataString
+              print("&nbsp;&nbsp;&nbsp;&nbsp;"+dataString, file=f)
             firstBrief = False
           else:
-            print >> f, dataString 
+            print(dataString, file=f) 
             
             
     # Tag Details        
     elif dataType == "details":
       if dataIsValid:
-        print >> f, dataString
+        print(dataString, file=f)
       else:
-        print >> f, "<br>"
-        print >> f, dataString
+        print("<br>", file=f)
+        print(dataString, file=f)
          
     # Tag Fig                
     elif dataType == "fig":
       if isHome:
-        print >> f, "<br><div id=\"centerImg\"><img src=\"./%s/%s\" alt=\"EnjoyDigital\"><br>%s</div>" %(illustationsDir,dataFigFilename,dataFigName)
+        print("<br><div id=\"centerImg\"><img src=\"./%s/%s\" alt=\"EnjoyDigital\"><br>%s</div>" %(illustationsDir,dataFigFilename,dataFigName), file=f)
       else:       
-        print >> f, "<br><div id=\"centerImg\"><img src=\"../%s/%s\" alt=\"EnjoyDigital\"><br>%s</div>" %(illustationsDir,dataFigFilename,dataFigName)
+        print("<br><div id=\"centerImg\"><img src=\"../%s/%s\" alt=\"EnjoyDigital\"><br>%s</div>" %(illustationsDir,dataFigFilename,dataFigName), file=f)
   
   
   
@@ -672,9 +672,9 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
   generateHtmlFilter(f,"Entities",1)
   
   #Title
-  print >> f, "<h1><img src=\"Style/icons/028.png\">  Entity %s.%s </h1>" %(libraryName,entityName)
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h1><img src=\"Style/icons/028.png\">  Entity %s.%s </h1>" %(libraryName,entityName), file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   
   #Retrieve fileName
   entityFilename = retrieveFilenameElement(parseInfo,"entity",entityName)             
@@ -685,22 +685,22 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
   #Show Entity & Tags
   ######################
            
-  print >> f, "File <a href=\""+docVhdlFileName+"\">"+showVhdlFileName+"</a><br>"
+  print("File <a href=\""+docVhdlFileName+"\">"+showVhdlFileName+"</a><br>", file=f)
   tagInsertionHtml(f,entityFilename,"entity",entityName,False)
   
   
   ######################
   #Show Libraries
   ######################
-  print >> f, "<h2><img src=\"Style/icons/006.png\">  Libraries</h2>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h2><img src=\"Style/icons/006.png\">  Libraries</h2>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   
   #Get Library corresponding to File
   libraryList = listLibrary(entityFilename)
   
   #Start Table
-  print >> f, "<table border=\"0\">"
+  print("<table border=\"0\">", file=f)
   
   currentLibrary = ""
   
@@ -712,31 +712,31 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
     libraryIsInDesign = library[3]
   
     if libraryType == "library":
-      print >> f, "<tr><td>Library "+libraryName+"</a></td></tr>"
+      print("<tr><td>Library "+libraryName+"</a></td></tr>", file=f)
       currentLibrary = libraryName
     elif libraryType == "use":
       linkUseName = "../packages/"+currentLibrary+"."+libraryReduceName+".html"
       
       if libraryIsInDesign:
-        print >> f, "<tr><td>Use <a href=\""+linkUseName+"\">"+libraryName+"</a></td></tr>"
+        print("<tr><td>Use <a href=\""+linkUseName+"\">"+libraryName+"</a></td></tr>", file=f)
       else:
-        print >> f, "<tr><td>Use "+libraryName+"</td></tr>"            
+        print("<tr><td>Use "+libraryName+"</td></tr>", file=f)            
         
    #End Table
-  print >> f, "</table>"      
+  print("</table>", file=f)      
         
   ######################
   #Show Signals
   ######################
-  print >> f, "<h2><img src=\"Style/icons/006.png\">  Ports</h2>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h2><img src=\"Style/icons/006.png\">  Ports</h2>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   
   #Get Library corresponding to Entity
   signalList = listSignal(entityName)
   
   #Start Syntax Hilighting
-  print >> f, "<pre class=\"brush: vhdl;\">"
+  print("<pre class=\"brush: vhdl;\">", file=f)
   
   for signal in signalList:
     signalName        =  signal[0]
@@ -753,24 +753,24 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
     for i in range(10-signalDirectionLength):
       spaceSecond = spaceSecond + " "
       
-    print >> f, "%s%s%s%s%s" %(signalName,spaceFirst,signalDirection,spaceSecond,signalType)        
+    print("%s%s%s%s%s" %(signalName,spaceFirst,signalDirection,spaceSecond,signalType), file=f)        
               
   #End SyntaxHilighting
-  print >> f, "</pre>"
+  print("</pre>", file=f)
                 
   ######################
   #Show Architecture
   ######################
-  print >> f, "<h2><img src=\"Style/icons/006.png\">  Architecture ",
+  print("<h2><img src=\"Style/icons/006.png\">  Architecture ", end=' ', file=f)
     
   #Get Library corresponding to Entity
   architectureList = listArchitecture(entityName)
   
   for architecture in architectureList:
-        print >> f, "["+architecture+"]</h2>"           
-        print >> f, "</div>"
-        print >> f, "<div id=\"%s\"></div>" %architecture
-        print >> f, "<div id=\"contentArchitecture\">"       
+        print("["+architecture+"]</h2>", file=f)           
+        print("</div>", file=f)
+        print("<div id=\"%s\"></div>" %architecture, file=f)
+        print("<div id=\"contentArchitecture\">", file=f)       
   
   
   ######################
@@ -787,22 +787,22 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
       if str.upper(entityFilename) == str.upper(instanceFilename):
         if findInstance == False:
           findInstance = True
-          print >> f, "<h2><img src=\"Style/icons/002.png\">  Instances</h2>"
-          print >> f, "</div>"
-          print >> f, "<div id=\"contentArchitecture\">"
+          print("<h2><img src=\"Style/icons/002.png\">  Instances</h2>", file=f)
+          print("</div>", file=f)
+          print("<div id=\"contentArchitecture\">", file=f)
           
         #Start Table
-        print >> f, "<table border=\"0\">"       
-        print >> f, "<tr>"
-        print >> f, "<td>"
-        print >> f,instanceName+"&nbsp;&nbsp;&nbsp;"
-        print >> f,"</td>"
-        print >> f, "<td>"
-        print >> f,instanceEntityName
-        print >> f,"</td>"
-        print >> f,"</tr>"
+        print("<table border=\"0\">", file=f)       
+        print("<tr>", file=f)
+        print("<td>", file=f)
+        print(instanceName+"&nbsp;&nbsp;&nbsp;", file=f)
+        print("</td>", file=f)
+        print("<td>", file=f)
+        print(instanceEntityName, file=f)
+        print("</td>", file=f)
+        print("</tr>", file=f)
         #End Table
-        print >> f, "</table>"
+        print("</table>", file=f)
         #Show Entity Tags
         tagInsertionHtml(f,entityFilename,"instance",instanceName,False)               
 
@@ -819,30 +819,30 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
       if str.upper(entityFilename) == str.upper(processFilename):
         if findProcess == False:
           findProcess = True
-          print >> f, "<h2><img src=\"Style/icons/002.png\">  Processes</h2>"
-          print >> f, "</div>"
-          print >> f, "<div id=\"contentArchitecture\">"
+          print("<h2><img src=\"Style/icons/002.png\">  Processes</h2>", file=f)
+          print("</div>", file=f)
+          print("<div id=\"contentArchitecture\">", file=f)
        
         #Start Table
-        print >> f, "<table border=\"0\">"              
-        print >> f, "<tr>"
-        print >> f, "<td>"
-        print >> f,processName+"&nbsp;&nbsp;&nbsp;"
-        print >> f,"</td>"
-        print >> f, "<td>"
-        print >> f,processSensitivity
-        print >> f,"</td>"
-        print >> f,"</tr>"
+        print("<table border=\"0\">", file=f)              
+        print("<tr>", file=f)
+        print("<td>", file=f)
+        print(processName+"&nbsp;&nbsp;&nbsp;", file=f)
+        print("</td>", file=f)
+        print("<td>", file=f)
+        print(processSensitivity, file=f)
+        print("</td>", file=f)
+        print("</tr>", file=f)
         #End Table
-        print >> f, "</table>"
+        print("</table>", file=f)
         #Show Entity Tags
         tagInsertionHtml(f,entityFilename,"process",processName,False)           
         
 
      
   
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
      
   #Generate Html Footer
   generateHtmlFooter(f)
@@ -857,8 +857,8 @@ def generateEntitiesHtml(entityName,libraryName,srcDir):
 def generateEntitiesListHtml(designFileList,libraryName,srcDir):
   
   #Message
-  print " Start Entities Generation"
-  print "------------------------------------------------------------------"
+  print(" Start Entities Generation")
+  print("------------------------------------------------------------------")
 
   #Open File
   f = open(os.path.join(htmlDocDir,'entities.html'), 'w+')
@@ -870,11 +870,11 @@ def generateEntitiesListHtml(designFileList,libraryName,srcDir):
   generateHtmlFilter(f,"Entities",0)
   
   #Title
-  print >> f, "<h1><img src=\"Style/icons/021.png\">  List of entities and architectures</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h1><img src=\"Style/icons/021.png\">  List of entities and architectures</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   #Start Table
-  print >> f, "<table border=\"0\">"
+  print("<table border=\"0\">", file=f)
   
   for entityParseElement in parseInfo:
   
@@ -889,13 +889,13 @@ def generateEntitiesListHtml(designFileList,libraryName,srcDir):
               if  entityName ==  architectureParseElement[ARCHITECTURE_ENTITY_NAME_RK]:
                 architectureName = architectureParseElement[ARCHITECTURE_NAME_RK]
             
-          print >> f, "<tr><td><a href=\"Entities/%s.%s.html\">%s.%s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a href=\"Entities/%s.%s.html#%s\">[%s]</a></td></tr>" %(libraryName,entityName,libraryName,entityName,libraryName,entityName,architectureName,architectureName)
+          print("<tr><td><a href=\"Entities/%s.%s.html\">%s.%s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a href=\"Entities/%s.%s.html#%s\">[%s]</a></td></tr>" %(libraryName,entityName,libraryName,entityName,libraryName,entityName,architectureName,architectureName), file=f)
       
           generateEntitiesHtml(entityName,libraryName,srcDir)
   
   
   #End Table
-  print >> f, "</table>"
+  print("</table>", file=f)
   #print >> f, "</table border>"
      
   #Generate Html Footer
@@ -919,9 +919,9 @@ def generatePackagesHtml(packageName,libraryName,srcDir):
   generateHtmlFilter(f,"Packages",1)
   
   #Title                        
-  print >> f, "<h1><img src=\"Style/icons/028.png\">  Package %s.%s </h1>" %(libraryName,packageName)
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h1><img src=\"Style/icons/028.png\">  Package %s.%s </h1>" %(libraryName,packageName), file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   
   #Retrieve fileName 
   for parseElement in parseInfo:
@@ -933,22 +933,22 @@ def generatePackagesHtml(packageName,libraryName,srcDir):
         
   docVhdlFileName = "../"+sourcesDir +"/" + os.path.splitext(os.path.basename(packageFilename))[0]+".vhd.html"
   showVhdlFileName = str.replace(packageFilename,srcDir,"")
-  print >> f, "File <a href=\""+docVhdlFileName+"\">"+showVhdlFileName+"</a><br>"
+  print("File <a href=\""+docVhdlFileName+"\">"+showVhdlFileName+"</a><br>", file=f)
   
   
   #Find Library                  
-  print >> f, "<h2><img src=\"Style/icons/006.png\">  Libraries</h2>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h2><img src=\"Style/icons/006.png\">  Libraries</h2>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   #Start Table
-  print >> f, "<table border=\"0\">"
+  print("<table border=\"0\">", file=f)
   for parseElement in parseInfo:
     elementType = parseElement[TYPE_RK]
     if elementType == "library":
       libraryElementName     =  parseElement[LIBRARY_NAME_RK]
       libraryElementFilename =  parseElement[FILENAME_RK] 
       if str.upper(libraryElementFilename) == str.upper(packageFilename):
-        print >> f, "<tr><td>Library "+libraryName+"</a></td></tr>"
+        print("<tr><td>Library "+libraryName+"</a></td></tr>", file=f)
     elif elementType == "use":
       useElementName     =  parseElement[USE_NAME_RK]
       useElementFilename =  parseElement[FILENAME_RK]
@@ -964,59 +964,59 @@ def generatePackagesHtml(packageName,libraryName,srcDir):
               compiledLibrary = True
         
         if compiledLibrary:          
-          print >> f, "<tr><td>Use <a href=\""+linkUseName+"\">"+useElementName+"</a></td></tr>"
+          print("<tr><td>Use <a href=\""+linkUseName+"\">"+useElementName+"</a></td></tr>", file=f)
         else:
-          print >> f, "<tr><td>Use "+useElementName+"</td></tr>"
+          print("<tr><td>Use "+useElementName+"</td></tr>", file=f)
             
         
    #End Table
-  print >> f, "</table>"
+  print("</table>", file=f)
   
 
   #Find Component
-  print >> f, "<h2><img src=\"Style/icons/006.png\">  Components</h2>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h2><img src=\"Style/icons/006.png\">  Components</h2>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   #Start Table
-  print >> f, "<table border=\"0\">"
+  print("<table border=\"0\">", file=f)
   for parseElement in parseInfo:
     elementType = parseElement[TYPE_RK]
     if elementType == "component":
       componentName     =  parseElement[COMPONENT_NAME_RK]
       componentFilename =  parseElement[FILENAME_RK] 
       if str.upper(componentFilename) == str.upper(packageFilename):
-        print >> f, "<tr>"
-        print >> f, "<td>"
-        print >> f, componentName+"&nbsp;&nbsp;&nbsp;"
-        print >> f, "</td>"
-        print >> f, "<td>"
+        print("<tr>", file=f)
+        print("<td>", file=f)
+        print(componentName+"&nbsp;&nbsp;&nbsp;", file=f)
+        print("</td>", file=f)
+        print("<td>", file=f)
         entityLink = "../../"+entitiesDocDir +"/"+libraryName+"."+componentName+".html"
-        print >> f, "<a href=\"%s\">[default binding]</a>" %entityLink
-        print >> f, "</td>"
-        print >> f, "</tr>"
+        print("<a href=\"%s\">[default binding]</a>" %entityLink, file=f)
+        print("</td>", file=f)
+        print("</tr>", file=f)
   #End Table
-  print >> f, "</table>"      
+  print("</table>", file=f)      
         
   #Find Function
-  print >> f, "<h2><img src=\"Style/icons/006.png\">  Functions</h2>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h2><img src=\"Style/icons/006.png\">  Functions</h2>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   #Start Table
-  print >> f, "<table border=\"0\">"
+  print("<table border=\"0\">", file=f)
   for parseElement in parseInfo:
     elementType = parseElement[TYPE_RK]
     if elementType == "function":
       functionName     =  parseElement[COMPONENT_NAME_RK]
       functionFilename =  parseElement[FILENAME_RK] 
       if str.upper(functionFilename) == str.upper(functionFilename):
-        print >> f, "<tr>"
-        print >> f, "<td>"
-        print >> f, functionName+"&nbsp;&nbsp;&nbsp;"
-        print >> f, "</td>"
-        print >> f, "</tr>"      
+        print("<tr>", file=f)
+        print("<td>", file=f)
+        print(functionName+"&nbsp;&nbsp;&nbsp;", file=f)
+        print("</td>", file=f)
+        print("</tr>", file=f)      
         
    #End Table
-  print >> f, "</table>"
+  print("</table>", file=f)
 
 
   #Generate Html Footer
@@ -1032,8 +1032,8 @@ def generatePackagesHtml(packageName,libraryName,srcDir):
 def generatePackageListHtml(designFileList,libraryName,srcDir):
 
   #Message
-  print " Start Packages Generation"
-  print "------------------------------------------------------------------"
+  print(" Start Packages Generation")
+  print("------------------------------------------------------------------")
 
   #Open File
   f = open(os.path.join(htmlDocDir,'packages.html'), 'w+')
@@ -1045,12 +1045,12 @@ def generatePackageListHtml(designFileList,libraryName,srcDir):
   generateHtmlFilter(f,"Packages",0)
   
   #Title
-  print >> f, "<h1><img src=\"Style/icons/021.png\">  List of packages</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
+  print("<h1><img src=\"Style/icons/021.png\">  List of packages</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
   
   #Start Table
-  print >> f, "<table border=\"0\">"
+  print("<table border=\"0\">", file=f)
    
   for packageParseElement in parseInfo:
   
@@ -1059,11 +1059,11 @@ def generatePackageListHtml(designFileList,libraryName,srcDir):
       
         if packageParseElement[TYPE_RK] == "package":
           packageName = packageParseElement[USE_NAME_RK]
-          print >> f, "<tr><td><a href=Packages/"+libraryName+"."+packageName+".html>"+packageName+"</a></td></tr>"                                              
+          print("<tr><td><a href=Packages/"+libraryName+"."+packageName+".html>"+packageName+"</a></td></tr>", file=f)                                              
           generatePackagesHtml(packageName,libraryName,srcDir)    
   
    #End Table
-  print >> f, "</table>"
+  print("</table>", file=f)
      
   #Generate Html Footer
   generateHtmlFooter(f)
@@ -1076,8 +1076,8 @@ def generatePackageListHtml(designFileList,libraryName,srcDir):
 #======================================
 def generateUtilsHtml(designEntity,overviewList):
   #Message
-  print " Start Utils Generation"
-  print "------------------------------------------------------------------"
+  print(" Start Utils Generation")
+  print("------------------------------------------------------------------")
 
   #Open File
   f = open(os.path.join(htmlDocDir,'utils.html'), 'w+')
@@ -1089,19 +1089,19 @@ def generateUtilsHtml(designEntity,overviewList):
   generateHtmlFilter(f,"Utils",0)
   
   #Summary  
-  print >> f, "Some functions that can be useful:" 
+  print("Some functions that can be useful:", file=f) 
   
   #Why Compilation order
-  print >> f, "<h1><img src=\"Style/icons/010.png\">  Compilation Order</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "Here is the order to compile the design in your simulation or synthesis tool."
+  print("<h1><img src=\"Style/icons/010.png\">  Compilation Order</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("Here is the order to compile the design in your simulation or synthesis tool.", file=f)
   
   compileFileList = []
    
   #Show design Entity
-  print >> f, "<h2>Compilation order for %s</h2>"%(designEntity)
-  print >> f, "<pre class=\"brush: vhdl;\">"
+  print("<h2>Compilation order for %s</h2>"%(designEntity), file=f)
+  print("<pre class=\"brush: vhdl;\">", file=f)
   #Find levelMax
   levelMax = 0
   for overviewElement in overviewList:
@@ -1136,7 +1136,7 @@ def generateUtilsHtml(designEntity,overviewList):
                 if compileFileListElement == parseElementFilename:
                   fileAlreadyCompiled = True
               if fileAlreadyCompiled == False:    
-                print >> f, "%s"%(parseElementFilename)
+                print("%s"%(parseElementFilename), file=f)
                 compileFileList.append(parseElementFilename)
   
   #Compile Top Entity
@@ -1147,16 +1147,16 @@ def generateUtilsHtml(designEntity,overviewList):
     
     if parseElementType == "entity":
       if parseElementName == designEntity:
-        print >> f, "%s"%(parseElementFilename)
+        print("%s"%(parseElementFilename), file=f)
         compileFileList.append(parseElementFilename)
-  print >> f, "</pre>"
+  print("</pre>", file=f)
   
   #Comments,Tags statistics
-  print >> f, "<h1><img src=\"Style/icons/012.png\">  Comments, Tags Statistics</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "[To be done!]"
-  print >> f, "<br>"
+  print("<h1><img src=\"Style/icons/012.png\">  Comments, Tags Statistics</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("[To be done!]", file=f)
+  print("<br>", file=f)
   
   
   #Generate Html Footer
@@ -1173,8 +1173,8 @@ def generateUtilsHtml(designEntity,overviewList):
 #======================================
 def generateDocumentationHtml():
   #Message
-  print " Start Documentation Generation"
-  print "------------------------------------------------------------------"
+  print(" Start Documentation Generation")
+  print("------------------------------------------------------------------")
 
   #Open File
   f = open(os.path.join(htmlDocDir,'documentation.html'), 'w+')
@@ -1186,10 +1186,10 @@ def generateDocumentationHtml():
   generateHtmlFilter(f,"Documentation",0)
   
   #Documenation
-  print >> f, "<h1>Documentation</h1>"
-  print >> f, "</div>"
-  print >> f, "<div id=\"contentMini\">"
-  print >> f, "Documentation Synthesis of Design [To Be Done!]"
+  print("<h1>Documentation</h1>", file=f)
+  print("</div>", file=f)
+  print("<div id=\"contentMini\">", file=f)
+  print("Documentation Synthesis of Design [To Be Done!]", file=f)
   #Generate Html Footer
   generateHtmlFooter(f)
 

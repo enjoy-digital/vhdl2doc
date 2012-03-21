@@ -63,24 +63,24 @@ def generateConfigurationLatex(p_file):
   projectName = "FPGA_DEMO"
   
   #Configuration
-  print >> p_file, "%--------------------------------------------------"
-  print >> p_file, "% Generation automatique de la documentation       "
-  print >> p_file, "% Projet :"+projectName
-  print >> p_file, "%--------------------------------------------------"
-  print >> p_file, ""
-  print >> p_file, "%--------------------------------------------------"
-  print >> p_file, "% Configuration Latex du document"
-  print >> p_file, "\\documentclass[a4paper]{article}"
-  print >> p_file, "\\usepackage[latin1]{inputenc}"
-  print >> p_file, "\\usepackage[T1]{fontenc}"
-  print >> p_file, "\\usepackage{geometry}"
-  print >> p_file, "\\usepackage[francais]{babel}"
-  print >> p_file, "\\usepackage[pdftex]{graphicx}"
-  print >> p_file, "\\usepackage[nottoc, notlof, notlot]{tocbibind}"
-  print >> p_file, "\\usepackage{fancyhdr}"
-  print >> p_file, "\\pagestyle{fancy}"
-  print >> p_file, "%--------------------------------------------------"
-  print >> p_file, ""
+  print("%--------------------------------------------------", file=p_file)
+  print("% Generation automatique de la documentation       ", file=p_file)
+  print("% Projet :"+projectName, file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("", file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("% Configuration Latex du document", file=p_file)
+  print("\\documentclass[a4paper]{article}", file=p_file)
+  print("\\usepackage[latin1]{inputenc}", file=p_file)
+  print("\\usepackage[T1]{fontenc}", file=p_file)
+  print("\\usepackage{geometry}", file=p_file)
+  print("\\usepackage[francais]{babel}", file=p_file)
+  print("\\usepackage[pdftex]{graphicx}", file=p_file)
+  print("\\usepackage[nottoc, notlof, notlot]{tocbibind}", file=p_file)
+  print("\\usepackage{fancyhdr}", file=p_file)
+  print("\\pagestyle{fancy}", file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("", file=p_file)
   
 #=====================================
 # generateFrontPageLatex Function
@@ -91,14 +91,14 @@ def generateFrontPageLatex(p_file):
   projectAuthor = "Florent Kermarrec"
   
   #Front Page
-  print >> p_file, "%--------------------------------------------------"
-  print >> p_file, "% Front Page"
-  print >> p_file, "\\title{\\textbf{%s}}" %projectName
-  print >> p_file, "\\author{%s}" %projectAuthor
-  print >> p_file, "\\begin{document}" 
-  print >> p_file, "\\maketitle"
-  print >> p_file, "%--------------------------------------------------"
-  print >> p_file, ""
+  print("%--------------------------------------------------", file=p_file)
+  print("% Front Page", file=p_file)
+  print("\\title{\\textbf{%s}}" %projectName, file=p_file)
+  print("\\author{%s}" %projectAuthor, file=p_file)
+  print("\\begin{document}", file=p_file) 
+  print("\\maketitle", file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("", file=p_file)
   
 #=====================================
 # generateEmptyPageLatex Function
@@ -107,11 +107,11 @@ def generateEmptyPageLatex(p_file):
 
   #Empty Page
   
-  print >> p_file,"%--------------------------------------------------"
-  print >> p_file,"% Page Vierge"
-  print >> p_file,"\\newpage"
-  print >> p_file,"%--------------------------------------------------"
-  print >> p_file,""
+  print("%--------------------------------------------------", file=p_file)
+  print("% Page Vierge", file=p_file)
+  print("\\newpage", file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("", file=p_file)
   
 #=======================================
 # generateTableOfContentsLatex Function
@@ -119,13 +119,13 @@ def generateEmptyPageLatex(p_file):
 def generateTableOfContentsLatex(p_file):
   
   #Empty Page
-  print >> p_file,"%--------------------------------------------------"
-  print >> p_file,"% Table of contents"
-  print >> p_file,"\\newpage"
-  print >> p_file,"\\vspace{20mm}"
-  print >> p_file,"\\tableofcontents"
-  print >> p_file,"%--------------------------------------------------"
-  print >> p_file,""
+  print("%--------------------------------------------------", file=p_file)
+  print("% Table of contents", file=p_file)
+  print("\\newpage", file=p_file)
+  print("\\vspace{20mm}", file=p_file)
+  print("\\tableofcontents", file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("", file=p_file)
 
 #=======================================
 # generateListOfFiguresLatex Function
@@ -133,13 +133,13 @@ def generateTableOfContentsLatex(p_file):
 def generateListOfFiguresLatex(p_file):
   
   #Empty Page
-  print >> p_file,"%--------------------------------------------------"
-  print >> p_file,"% List of figures"
-  print >> p_file,"\\newpage"
-  print >> p_file,"\\vspace{20mm}"
-  print >> p_file,"\\listoffigures"
-  print >> p_file,"%--------------------------------------------------"
-  print >> p_file,"" 
+  print("%--------------------------------------------------", file=p_file)
+  print("% List of figures", file=p_file)
+  print("\\newpage", file=p_file)
+  print("\\vspace{20mm}", file=p_file)
+  print("\\listoffigures", file=p_file)
+  print("%--------------------------------------------------", file=p_file)
+  print("", file=p_file) 
   
 
 #=====================================
@@ -148,7 +148,7 @@ def generateListOfFiguresLatex(p_file):
 def generateEndLatex(p_file):
   
   #Configuration
-  print >> p_file,"\\end{document}"
+  print("\\end{document}", file=p_file)
   
   
 #=====================================

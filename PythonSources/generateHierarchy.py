@@ -110,7 +110,7 @@ designHierarchyFileList = []
 def findOrfanEntity ():
 
   orfanList = []
-  print " Searching possible Top..."
+  print(" Searching possible Top...")
   
   for parseElement in parseInfoReduce:
     
@@ -138,19 +138,19 @@ def findOrfanEntity ():
 #=================================
 def selectOrfanEntity (orfanList):
   #Show Orfans
-  print " found:"    
+  print(" found:")    
   for orfanElement in orfanList:
-    print " - " + orfanElement
+    print(" - " + orfanElement)
   
   #Select Orfan Top
-  top = raw_input(' Which one would you want to build? :')
+  top = input(' Which one would you want to build? :')
   validChoice = False
   while not validChoice:
     for orfanElement in orfanList:
       if orfanElement == top:
         validChoice = True
     if not validChoice:
-      top = raw_input(' Incorrect, Retry! :')
+      top = input(' Incorrect, Retry! :')
   
   return top
   
@@ -184,7 +184,7 @@ def findDesignHierarchy(designEntity,currentLevel):
 
   #Search Direct 
   if currentLevel == 0:
-    print " Searching hierarchy of %s ..." %(designEntity)
+    print(" Searching hierarchy of %s ..." %(designEntity))
   
   #Retrieve File Name
   designEntityFilename = retrieveFilenameElement(parseInfoReduce,"entity",designEntity)
@@ -369,10 +369,10 @@ def generateHierarchyProtovis(designHierarchyFileList):
   fh = open(htmlDocDir+'\hierarchy.js', 'w+')
   
   #Define hierarchy variable
-  print >> fh, "var hierarchy = {"
+  print("var hierarchy = {", file=fh)
   
   #Show designEntity
-  print >> fh, "%s:{"%(designEntity)
+  print("%s:{"%(designEntity), file=fh)
   
   #Initialize
   levelLast = 0;
@@ -385,22 +385,22 @@ def generateHierarchyProtovis(designHierarchyFileList):
     if firstLoop == False:
       #If Same Level "," to indicate next
       if levelLast == designHierarchyElement[HIERARCHY_LEVEL_RK]:
-        print >> fh, ","
+        print(",", file=fh)
       #If last Level > current Level, close bracket(s)
       elif levelLast > designHierarchyElement[HIERARCHY_LEVEL_RK]:
         for i in range(levelLast-designHierarchyElement[HIERARCHY_LEVEL_RK]):
-          print >> fh, "},"
+          print("},", file=fh)
     
     firstLoop = False
     
     #Indent Elements   
     for i in range(designHierarchyElement[HIERARCHY_LEVEL_RK]+1):
-      print >> fh, "    ",
+      print("    ", end=' ', file=fh)
   
     #If Package
     if designHierarchyElement[HIERARCHY_TYPE_RK] == "package":
       #Suppress "."
-      print >> fh, "%s : 1"%str.replace(designHierarchyElement[HIERARCHY_NAME_RK],".","_"),
+      print("%s : 1"%str.replace(designHierarchyElement[HIERARCHY_NAME_RK],".","_"), end=' ', file=fh)
     
     #If Instance
     elif designHierarchyElement[HIERARCHY_TYPE_RK] == "instance":
@@ -408,20 +408,20 @@ def generateHierarchyProtovis(designHierarchyFileList):
       #If Instance entity is link to others entity
       if isEntityLinkTo(designHierarchyElement[HIERARCHY_NAME_RK]):
         #Open bracket
-        print >> fh, "%s : {" %designHierarchyElement[HIERARCHY_NAME_RK]
+        print("%s : {" %designHierarchyElement[HIERARCHY_NAME_RK], file=fh)
       else:
         #Show  Instance as Std Element
-        print >> fh, "%s : 1" %(designHierarchyElement[HIERARCHY_NAME_RK]),
+        print("%s : 1" %(designHierarchyElement[HIERARCHY_NAME_RK]), end=' ', file=fh)
     
     #Update Last Level
     levelLast = designHierarchyElement[HIERARCHY_LEVEL_RK]
     
   #Close level brackets
   for i in range(levelLast+1):
-    print >> fh, "}"
+    print("}", file=fh)
   
   #Close last brackets
-  print >> fh, "};"
+  print("};", file=fh)
   
   #Close file
   fh.close()  
