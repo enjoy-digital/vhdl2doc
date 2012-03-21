@@ -1,3 +1,0 @@
-cd Documentation_Latex
-pdflatex documentationLatex.tex
-pause
