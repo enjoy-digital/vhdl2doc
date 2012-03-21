@@ -220,7 +220,7 @@ def generateHtmlFooter(p_file):
   print("</script>", file=p_file)
 	
   print("<div id=\"footerLeftColumn\">", file=p_file)
-  print("<a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/EnjoyDigitalGrayOpenHardware.png\" alt=\"EnjoyDigital\"></a>" %(styleDir), file=p_file)
+  print("<a href=\"http://www.enjoy-digital.fr/\" title=\"enjoydigital\" rel=\"home\"><img src=\"%s/images/EnjoyDigitalGray.png\" alt=\"EnjoyDigital\"></a>" %(styleDir), file=p_file)
   print("</div>", file=p_file)
     
   print("<div id=\"footerRightColumn\">", file=p_file)
