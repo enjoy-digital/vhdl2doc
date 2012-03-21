@@ -2,19 +2,18 @@
 -------------------------------
 
 This is the souce code of a Python tool that let you easily explore and find the
-hierarchy of an VHDL design.
+hierarchy of a VHDL design.
 
 [> What can you do with?
 
-  - Found an undocumented design and want to understand explore it in your html browser?
+  - Found an undocumented design and want to understand/explore it in your html browser?
   - Want a quick overview of your work to exchange with your client?
   - Want to know the compilation order of your design?
 
-With the use of special Vhdl2Doc Tags you can also:
+  With the use of special Vhdl2Doc Tags you can also:
   - Embedded timing diagrams, diagrams, illustration or others pictures in your VHDL Code
   - Embedded comments, informations, .. in your VHDL Code
   - ...
-  
   And visualize all this informations in a clean and simple html interface.   
 
 [> Directory Structure
@@ -23,9 +22,6 @@ With the use of special Vhdl2Doc Tags you can also:
   - /SampleIllustration/      VHDL project Illustrations                  (To Be Done)
   - /Documentation_Html/      Output Html  Result
   - /Documentation_Latex/     Output Latex Result                         (To be Done)
-
-[> Try Directory Structure
-
 
 [> Building tools
 You will need:
@@ -43,6 +39,8 @@ You will need:
   - On Linux   run:  python PythonSources/Vhdl2Doc.py  -f
   - On Windows run:  PythonSources/Vhdl2Doc.py  -f
   
+  
+  There's no sample design yet in the SampleDesign directory but it will be available soon!  
   
 [> Contact
 E-mail: florent@enjoy-digital.fr  
